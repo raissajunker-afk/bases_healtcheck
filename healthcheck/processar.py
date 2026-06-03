@@ -5580,6 +5580,14 @@ def main():
 
     }
 
+    # 14b. Fase 2 — camada modular portal (mantém chaves legadas na raiz)
+    try:
+        from payload_builder import enriquecer_payload_portal
+        payload = enriquecer_payload_portal(payload, bases_dir=BASES_DIR)
+        print("  [portal] Chave 'portal' anexada ao payload (dimensions, sections, pages, audit)")
+    except Exception as _e_portal:
+        print(f"  [portal] Aviso: payload modular não anexado: {_e_portal}")
+
     # 15. Salvar — sanitizar NaN/Inf (JSON spec não suporta, mas Python aceita)
     import math
     def sanitize(obj):

@@ -67,7 +67,11 @@ const PORTAL_SECTIONS = __PORTAL_SECTIONS_JSON__;
 function portalBuildHome(){
   const root = document.getElementById('portal-home');
   if(!root) return;
-  root.innerHTML = '<div class="portal-hero"><h2>Healthcheck — Portal Analítico</h2><p>Navegue por tema. Cada página abre o mesmo dashboard já existente (gráficos, tabelas, simulador, exports CSV).</p></div><div class="portal-grid" id="portal-sec-grid"></div>';
+  let ins = '';
+  if(typeof DATA !== 'undefined' && DATA.portal && DATA.portal.insights_global){
+    ins = '<div style="margin:12px 0">' + DATA.portal.insights_global.map(i=>'<div class="portal-page-intro" style="margin-bottom:6px"><strong>'+i.type+'</strong>: '+i.text+'</div>').join('') + '</div>';
+  }
+  root.innerHTML = '<div class="portal-hero"><h2>Healthcheck — Portal Analítico</h2><p>Navegue por tema. Dashboard original (gráficos, tabelas, CSV). Insights da Fase 2 abaixo.</p></div>'+ins+'<div class="portal-grid" id="portal-sec-grid"></div>';
   const grid = document.getElementById('portal-sec-grid');
   (PORTAL_SECTIONS.sections||[]).forEach(sec=>{
     const card = document.createElement('div');
