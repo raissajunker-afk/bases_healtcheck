@@ -3,13 +3,14 @@ __pycache__/
 *.pyc
 *.pyo
 
-# Saída gerada
+# Saída gerada (payload + HTML de trabalho)
 healthcheck/output/
 
-# Bases de exemplo geradas localmente (mantemos apenas o template de config)
-healthcheck/bases/*.csv
-!healthcheck/bases/franquias_especialidades.csv
+# Bases brutas (≈270 MB) — não versionar
+healthcheck/bases/
 
-# Artefatos temporários de teste/validação
+# Artefatos temporários de teste/validação (raiz do workspace)
 /_hc_*.js
 /_shot_*.png
+/_r_*.png
+/hc.7z

@@ -1,184 +1,101 @@
 # Healthcheck Operacional — Portal Analítico Modular
 
-Pipeline **offline** em Python (apenas biblioteca padrão) que lê as bases em
-CSV e gera um **portal analítico self-contained** em HTML: um único arquivo que
-abre em qualquer navegador, sem internet e sem dependências externas, pronto
-para compartilhar por e-mail, Teams, SharePoint ou WhatsApp.
-
-O projeto evoluiu de um *dashboard único com muitas abas* para um **portal
-modular** com a hierarquia:
+Transforma o Healthcheck Operacional (MSD Oncologia) de um *dashboard único com
+muitas abas* em um **portal analítico modular**, **sem alterar nenhuma regra de
+negócio**: o motor de cálculo continua sendo o `processar.py` original.
 
 ```
-Home → Macro Seção → Sub Seção → Página Analítica → Blocos (KPI, tabela, gráfico, insight, export, metodologia)
+bases CSV ──(processar.py: regras reais)──> payload.json
+          ──(portal/adapter.py)──────────> payload modular
+          ──(frontend/html_builder.py)───> Healthcheck_Portal.html  (self-contained)
 ```
 
-São **15 macro seções**, cada uma com até 5 sub seções e cada página com até 8
-blocos analíticos — uma infraestrutura que suporta centenas de blocos e cresce
-**por configuração**, sem reescrever a aplicação.
-
----
+O resultado é um **único arquivo HTML offline** (abre em qualquer navegador, sem
+internet), com navegação **Home → Macro Seção → Sub Seção → Página Analítica**,
+filtros globais (GD, Sales Force, Consultor, Janela) e componentes reutilizáveis.
 
 ## Como rodar
 
-Requisito: **Python 3.10+** (nenhuma dependência externa — usa só a stdlib).
+O `processar.py` requer `pandas`, `numpy`, `openpyxl` (como no projeto original).
+O portal em si (adapter + HTML) usa só a biblioteca padrão.
 
 ```bash
-# 1) Coloque suas bases CSV na pasta de bases (veja "Bases" abaixo)
-# 2) Rode tudo (processa + gera HTML):
-python main.py
+pip install pandas numpy openpyxl   # apenas para o processar.py
 
-# Refazer apenas o HTML (payload já existe — ajuste visual rápido):
-python main.py --skip-processar
-
-# Refazer apenas o processamento/payload:
-python main.py --skip-html
-
-# Apontar para uma pasta de bases específica:
-python main.py --bases "C:\caminho\para\bases"
-
-# Gerar bases de exemplo (sintéticas) e validar o portal sem dados reais:
-python main.py --demo
+python main.py                  # roda tudo: processar.py + portal + HTML
+python main.py --skip-processar # refaz só o portal/HTML usando payload.json existente
+python main.py --skip-html      # roda só o processar.py (gera payload.json)
+python main.py --bases "C:\...\bases"   # aponta a pasta de bases
 ```
 
-A saída fica em `output/`:
+Saídas em `output/`:
+- `Healthcheck_Portal.html` — **o portal** (abra no navegador / compartilhe)
+- `payload.json` — payload real gerado pelo `processar.py`
+- `portal_payload.json` — payload modular adaptado para o portal
+- `audit/` — `processar_log.txt`, `dedup_audit.csv`, `tipo_setor_audit.csv`
 
-- `output/Healthcheck_BU.html` — **o portal** (abra no navegador)
-- `output/payload.json` — payload modular gerado
-- `output/audit/` — área reservada para artefatos de auditoria
+### Bases (input)
 
-### Onde ficam as bases
-
-O caminho é resolvido nesta ordem:
-
-1. variável de ambiente `HEALTHCHECK_BASES`;
-2. caminho corporativo do usuário (configurado em `config.py`):
-   `C:\Users\delimajr\OneDrive - Merck Sharp & Dohme LLC\Desktop\PY\healthcheck\bases`;
-3. pasta local `./bases` do projeto.
-
----
-
-## Bases esperadas
-
-Todas são **opcionais** — o pipeline degrada com elegância e os blocos sem dado
-mostram um estado vazio explicativo. A leitura é **tolerante** (detecta
-delimitador `;`/`,`/tab, encoding, e mapeia sinônimos de colunas).
-
-| Arquivo (prefixo)                    | Conteúdo                                            |
-|--------------------------------------|-----------------------------------------------------|
-| `relatorio_visitas_*.csv`            | Visitas (data, consultor, SF, GD, médico, canal, UF…) |
-| `ausencias_*.csv`                    | Ausências (consultor, início, fim, dias, categoria) |
-| `painel*.csv`                        | Snapshot de painel (médico × consultor, MCCP)        |
-| `estrutura.csv` / `.xlsx`            | Hierarquia consultor/SF/GD, sede, tipo de setor, meta|
-| `franquias_especialidades.csv`       | Mapa estratégico Especialidade × Franquia (config)   |
-
-> Se não houver `painel*.csv`, o painel é **derivado das visitas**.
-
-### `franquias_especialidades.csv` (configuração estratégica)
-
-Formato (separador `;`):
+Caminho resolvido por: `HEALTHCHECK_BASES` → caminho corporativo (OneDrive, em
+`config.py`) → `./bases`. As bases esperadas pelo `processar.py` são as mesmas do
+projeto original:
 
 ```
-franquia;especialidade;relevancia;peso;papel;observacao
-GI;ONCOLOGIA CLINICA;alta;1.0;decisor;Especialidade central
+estrutura.xlsx · ausencias_de_campo_visao_geral.csv
+relatorio_visitas_24.csv · relatorio_visitas_25.csv · relatorio_visitas_26.csv
+relatorio_mccp.csv · relatorio_painel.csv · relatorio_brickagem.csv · relatorio_1030.csv
+excecoes_trocas_sf.csv · excecoes_trocas_gd.csv · MM_AAAA-ESTRUTURA-FV.csv (histórico)
 ```
 
-Regras: especialidade **nunca** é hardcodada no código; uma especialidade pode
-pertencer a mais de uma franquia; especialidade ausente vira `sem_classificacao`
-(auditada). Um template já vem em `bases/franquias_especialidades.csv`.
-
----
+> As bases (≈270 MB) **não são versionadas** no git. Coloque-as em `healthcheck/bases/`
+> ou aponte com `--bases`.
 
 ## Arquitetura
 
 ```
-Bases brutas (CSV)
-   ↓  processing/load_sources.py        (leitura tolerante)
-   ↓  processing/{painel,visitas,ausencias,cobertura,territorio,overlap,especialidades}.py
-   ↓  processing/indices.py             (consolida métricas por consultor)
-   ↓  processing/payload_builder.py     (payload modular: meta + dimensions + datasets + summaries + registry)
-   ↓  frontend/html_builder.py          (template + css + js + payload → HTML único)
-HTML final self-contained
-```
-
-- **Orquestrador único** (`main.py`): módulos separados para manutenção,
-  execução única para operação.
-- **Registry central** (`processing/registry.py`): única fonte de verdade da
-  navegação. Adicionar uma página = adicionar um dicionário; o frontend monta a
-  página por **componentes reutilizáveis** a partir da configuração dos blocos.
-- **Payload modular** com `datasets` (linhas filtráveis) e `summaries`
-  (agregados prontos). Os filtros globais (GD, SF, Consultor, Janela) são
-  aplicados de forma **centralizada** — nenhuma página duplica lógica de filtro.
-
-### Estrutura de pastas
-
-```
 healthcheck/
-├── main.py                  # orquestrador (--skip-processar / --skip-html / --demo / --bases)
-├── config.py                # caminhos, benchmarks, janelas, sinônimos de colunas
-├── processing/
-│   ├── load_sources.py  painel.py  visitas.py  ausencias.py
-│   ├── cobertura.py  territorio.py  overlap.py  especialidades.py
-│   ├── indices.py  registry.py  payload_builder.py  pipeline.py  util.py
+├── main.py                # orquestrador único (--skip-processar / --skip-html / --bases)
+├── config.py              # caminhos, janelas (sufixos), benchmarks (semáforo)
+├── processar.py           # MOTOR REAL (regras de negócio originais — intocado)
+├── gerar_html_legado.py   # gerador de HTML original (referência)
+├── portal/
+│   ├── adapter.py         # payload real -> datasets/summaries/dimensions do portal
+│   ├── registry.py        # 15 macro seções × sub seções × páginas × blocos (campos reais)
+│   └── pipeline.py        # roda processar.py, adapta e prepara o portal
 ├── frontend/
 │   ├── template.html  html_builder.py
 │   ├── css/{base,layout,components,pages}.css
 │   └── js/{state,filters,aggregate,registry,router,app}.js + js/components/*
-├── tools/gerar_dados_exemplo.py   # bases sintéticas para --demo
-├── bases/                          # suas bases CSV (apenas o template é versionado)
-└── output/                         # payload.json + Healthcheck_BU.html
+└── output/                # payload.json + Healthcheck_Portal.html + audit/
 ```
 
----
+- **Registry central** (`portal/registry.py`): única fonte de verdade da navegação.
+  Cada bloco é declarado por configuração e resolvido contra os campos **reais**
+  do payload (`pctCoberturaF2F`, `mccp_pct_cumprido`, `pct_ausencia`, `ipt`,
+  `score_territorio`, `pct_visitas_uf_sede`, `pct_overlap_intra`, ...). Adicionar
+  uma página = adicionar um dicionário; nenhum JS novo é necessário.
+- **Filtros globais centralizados**: GD, Sales Force, Consultor e **Janela**
+  (MAT 12m / 3m / mês fechado / parcial). A janela troca automaticamente o sufixo
+  do campo (`_mat`/`_3m`/`_1m`/`_parcial`) quando a variante existe no payload.
+- **Componentes reutilizáveis**: `kpi`, `table`, `ranking`, `chart` (line/bar/
+  donut), `insight`, `export` (CSV), `simulator`, `methodology`, `audit`.
+- **HTML self-contained**: `html_builder.py` inlina CSS, JS e o payload em um
+  único arquivo, preservando a facilidade de distribuição do projeto original.
 
 ## As 15 macro seções
 
-1. Executive Overview
-2. Performance Comercial
-3. Cobertura e Painel
-4. Visitação e Frequência
-5. Eficiência Territorial
-6. Ausências e Capacidade
-7. Especialidades e Franquias *(camada estratégica: IAEF, ICEF, IFEF, IDEF, matriz, gaps)*
-8. Qualidade de Execução
-9. Overlap e Conflitos
-10. Multicanal e Engajamento Digital
-11. Benchmark e Metas
-12. Simulador e Planejamento
-13. Oportunidades e Plano de Ação
-14. Saúde dos Dados
-15. Governança e Auditoria
+1. Executive Overview · 2. Performance Comercial · 3. Cobertura e Painel ·
+4. Visitação e Frequência · 5. Eficiência Territorial · 6. Ausências e Capacidade ·
+7. Especialidades e Cadastro · 8. Qualidade de Execução (MCCP/IPA/IPT) ·
+9. Overlap e Conflitos · 10. Multicanal e Engajamento · 11. Benchmark e Metas ·
+12. Simulador e Planejamento · 13. Oportunidades e Plano de Ação ·
+14. Saúde dos Dados · 15. Governança e Auditoria
 
----
+## Regras de negócio (preservadas do `processar.py`)
 
-## Como adicionar uma nova página (sem escrever JS)
-
-Edite `processing/registry.py` e adicione uma sub seção com `blocks`. Exemplo:
-
-```python
-{"id": "minha_pagina", "title": "Minha Página", "page": _page(
-    "Cobertura e Painel", "cobertura", "Minha Página", "cob_minha",
-    "Minha Página", "Qual pergunta de negócio?", "Qual decisão suporta?",
-    [
-        kpi("k1", "Cobertura F2F", "consultores", agg="ratio",
-            num="hcp_coberto_f2f", den="hcp_alvo", fmt="percent", benchmark="pct_cobertura_f2f"),
-        ranking("r1", "Ranking", "consultores", "consultor", "visitas"),
-        export_block("e1", "Exportar", "consultores"),
-    ])}
-```
-
-Tipos de bloco: `kpi`, `table`, `ranking`, `chart` (`line`/`bar`/`donut`/`heatmap`),
-`insight`, `export`, `methodology`, `simulator`, `audit`, `empty`.
-
----
-
-## Notas metodológicas
-
-- Visitas deduplicadas por `(consultor, médico, data, canal)`.
-- Cobertura F2F = médicos do painel com ≥1 visita presencial / painel.
-- Cobertura MCCP = médicos MCCP com ≥1 visita F2F / médicos MCCP.
-- `% ausência` = dias de ausência / dias úteis do período.
-- Índices estratégicos (seção 7): IAEF (aderência), ICEF (cobertura),
-  IFEF (frequência), IDEF (dispersão).
-
-Benchmarks (semáforo) e fórmulas estão centralizados em `config.py` e na seção
-**Governança e Auditoria** do próprio portal.
+- ICP-F2F = HCPs alvo com ≥1 interação F2F / HCPs alvo × 100.
+- ICP-Multi = HCPs alvo com ≥1 canal qualquer / HCPs alvo × 100.
+- HCP alvo = painel (snapshot ≤ mês fechado) ∩ MCCP (meta>0 no quarter).
+- MCCP % cumprido = realizado / meta do trimestre × 100.
+- Deduplicação de ausências (TOT), exclusão de SFs e tratamento de afastados
+  seguem **exatamente** o `processar.py` — este portal não recalcula nada.
