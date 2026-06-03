@@ -191,6 +191,36 @@ def run_legacy_processar(
     module = _load_module(project_dir / "processar.py", "legacy_processar_runtime")
     module.BASES_DIR = str(bases_dir)
     module.OUT_DIR = str(output_dir)
+    if hasattr(module, "PASTA_ESTRUTURAS"):
+        module.PASTA_ESTRUTURAS = str(bases_dir)
+    if hasattr(module, "_BASES_PREF"):
+        module._BASES_PREF = str(bases_dir)
+    if hasattr(module, "_OUT_PREF"):
+        module._OUT_PREF = str(output_dir)
+
+    if hasattr(module, "ler_excecoes_trocas_sf"):
+        original_sf = module.ler_excecoes_trocas_sf
+
+        def _ler_excecoes_trocas_sf(path: str | None = None):
+            return original_sf(path or str(bases_dir / "excecoes_trocas_sf.csv"))
+
+        module.ler_excecoes_trocas_sf = _ler_excecoes_trocas_sf
+
+    if hasattr(module, "ler_excecoes_trocas_gd"):
+        original_gd = module.ler_excecoes_trocas_gd
+
+        def _ler_excecoes_trocas_gd(path: str | None = None):
+            return original_gd(path or str(bases_dir / "excecoes_trocas_gd.csv"))
+
+        module.ler_excecoes_trocas_gd = _ler_excecoes_trocas_gd
+
+    if hasattr(module, "ler_estruturas_historicas"):
+        original_historico = module.ler_estruturas_historicas
+
+        def _ler_estruturas_historicas(pasta: str | None = None):
+            return original_historico(str(bases_dir if pasta is None else pasta))
+
+        module.ler_estruturas_historicas = _ler_estruturas_historicas
 
     print(f"[legacy] Bases reais: {bases_dir}")
     print(f"[legacy] Output legado: {output_dir}")
