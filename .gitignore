@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Saída gerada
+healthcheck/output/
+
+# Bases de exemplo geradas localmente (mantemos apenas o template de config)
+healthcheck/bases/*.csv
+!healthcheck/bases/franquias_especialidades.csv
+
+# Artefatos temporários de teste/validação
+/_hc_*.js
+/_shot_*.png

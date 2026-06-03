@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<style>/*{{CSS}}*/</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-left">
+    <button id="btn-home" class="brand" title="Voltar para a Home">
+      <span class="brand-mark">HC</span>
+      <span class="brand-text">Healthcheck Operacional</span>
+    </button>
+  </div>
+  <div class="topbar-filters" id="filters">
+    <!-- filtros globais injetados pelo JS -->
+  </div>
+  <div class="topbar-right">
+    <span class="gerado">Gerado em {{GERADO_EM}}</span>
+  </div>
+</header>
+
+<nav class="breadcrumb" id="breadcrumb"></nav>
+
+<main id="view" class="view"></main>
+
+<footer class="footer">
+  <span>Portal Analítico Modular — Healthcheck BU · self-contained · offline</span>
+</footer>
+
+<script>
+// O builder substitui __HC_PAYLOAD__ pelo JSON completo do payload.
+window.PAYLOAD = __HC_PAYLOAD__;
+/*{{JS}}*/
+</script>
+</body>
+</html>

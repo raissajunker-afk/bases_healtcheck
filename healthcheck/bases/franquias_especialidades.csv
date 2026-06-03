@@ -1,0 +1,11 @@
+﻿franquia;especialidade;relevancia;peso;papel;observacao
+GI;ONCOLOGIA CLINICA;alta;1.0;decisor;Especialidade central
+GI;GASTROENTEROLOGIA;alta;1.0;influenciador;Especialidade relevante
+GU;UROLOGIA;alta;1.0;decisor;Especialidade prioritaria
+GU;ONCOLOGIA CLINICA;alta;1.0;decisor;Especialidade central
+HN;CIRURGIA DE CABECA E PESCOCO;alta;1.0;decisor;Especialidade prioritaria
+HN;ONCOLOGIA CLINICA;media;0.8;influenciador;
+RESP;PNEUMOLOGIA;alta;1.0;decisor;
+RESP;ALERGOLOGIA;media;0.7;influenciador;
+IMUNO;REUMATOLOGIA;alta;1.0;decisor;
+IMUNO;DERMATOLOGIA;media;0.8;influenciador;

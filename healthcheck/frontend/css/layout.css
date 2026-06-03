@@ -1,0 +1,58 @@
+.topbar{
+  position:sticky;top:0;z-index:50;
+  display:flex;align-items:center;gap:16px;
+  padding:10px 22px;
+  background:var(--c-accent);
+  color:#fff;
+  box-shadow:var(--shadow);
+}
+.topbar-left{flex:0 0 auto}
+.brand{
+  display:flex;align-items:center;gap:10px;
+  background:transparent;border:0;color:#fff;font-size:15px;font-weight:600;
+}
+.brand-mark{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:34px;height:34px;border-radius:9px;
+  background:rgba(255,255,255,.18);font-weight:700;letter-spacing:.5px;
+}
+.brand-text{white-space:nowrap}
+.topbar-filters{flex:1 1 auto;display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center}
+.topbar-right{flex:0 0 auto}
+.gerado{font-size:12px;opacity:.85;white-space:nowrap}
+
+.filter{display:flex;flex-direction:column;gap:2px}
+.filter label{font-size:10px;text-transform:uppercase;letter-spacing:.5px;opacity:.85}
+.filter select{
+  border:0;border-radius:7px;padding:5px 8px;font-size:13px;
+  background:rgba(255,255,255,.95);color:var(--c-text);min-width:120px;max-width:200px;
+}
+
+.breadcrumb{
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  padding:10px 24px;font-size:13px;color:var(--c-muted);
+  background:var(--c-surface);border-bottom:1px solid var(--c-border);
+}
+.breadcrumb a{cursor:pointer}
+.breadcrumb .sep{opacity:.5}
+.breadcrumb .current{color:var(--c-text);font-weight:600}
+
+.view{padding:24px;max-width:1380px;margin:0 auto;min-height:60vh}
+
+.footer{
+  padding:18px 24px;text-align:center;color:var(--c-muted);font-size:12px;
+  border-top:1px solid var(--c-border);background:var(--c-surface);
+}
+
+.grid{display:grid;gap:16px}
+.grid-cards{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.grid-kpi{grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+.grid-blocks{grid-template-columns:repeat(12,1fr)}
+.block{grid-column:span 12}
+.block.span-6{grid-column:span 6}
+.block.span-4{grid-column:span 4}
+.block.span-3{grid-column:span 3}
+@media(max-width:900px){
+  .block.span-6,.block.span-4,.block.span-3{grid-column:span 12}
+  .topbar{flex-wrap:wrap}
+}
