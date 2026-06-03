@@ -95,7 +95,7 @@ def main() -> None:
 
     config.OUT_PATH.mkdir(parents=True, exist_ok=True)
 
-    if not args.skip_processar:
+    if not args.skip_processar and not args.portal_only:
         rodar_processamento()
     elif not config.PAYLOAD_PATH.exists():
         print(f"Aviso: {config.PAYLOAD_PATH} não existe. Use sem --skip-processar.")

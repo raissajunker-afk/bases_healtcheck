@@ -1,12 +1,15 @@
-"""Configuração do portal Healthcheck — caminhos e saídas."""
+"""Configuração — bases SEMPRE na subpasta `bases/` do projeto."""
 from pathlib import Path
 import os
 
 PROJECT_ROOT = Path(__file__).resolve().parent
 HEALTHCHECK_DIR = PROJECT_ROOT / "healthcheck"
-BASES_DIR_LOCAL = HEALTHCHECK_DIR / "bases"
-OUTPUT_DIR = HEALTHCHECK_DIR
 
+# Pasta bases dentro do healthcheck (conteúdo do 7z)
+BASES_LOCAL = HEALTHCHECK_DIR / "bases"
+OUT_LOCAL = HEALTHCHECK_DIR
+
+# Caminho no seu PC (OneDrive) — deve apontar para a pasta bases
 DEFAULT_BASES_WINDOWS = Path(
     r"C:\Users\delimajr\OneDrive - Merck Sharp & Dohme LLC\Desktop\PY\healthcheck\bases"
 )
@@ -14,16 +17,35 @@ DEFAULT_OUT_WINDOWS = Path(
     r"C:\Users\delimajr\OneDrive - Merck Sharp & Dohme LLC\Desktop\PY\healthcheck"
 )
 
-BASES_PATH = Path(os.environ.get("HEALTHCHECK_BASES_PATH", DEFAULT_BASES_WINDOWS))
-if not BASES_PATH.is_dir():
-    BASES_PATH = BASES_DIR_LOCAL
+def _resolve_bases() -> Path:
+    env = os.environ.get("HEALTHCHECK_BASES_PATH")
+    if env:
+        p = Path(env)
+        return p if p.is_dir() else p
+    if DEFAULT_BASES_WINDOWS.is_dir():
+        return DEFAULT_BASES_WINDOWS
+    return BASES_LOCAL
 
-OUT_PATH = Path(os.environ.get("HEALTHCHECK_OUT_PATH", DEFAULT_OUT_WINDOWS))
-if not OUT_PATH.is_dir():
-    OUT_PATH = OUTPUT_DIR
+
+def _resolve_out() -> Path:
+    env = os.environ.get("HEALTHCHECK_OUT_PATH")
+    if env:
+        return Path(env)
+    if DEFAULT_OUT_WINDOWS.is_dir():
+        return DEFAULT_OUT_WINDOWS
+    return OUT_LOCAL
+
+
+BASES_PATH = _resolve_bases()
+OUT_PATH = _resolve_out()
 
 PAYLOAD_PATH = OUT_PATH / "payload.json"
 PORTAL_HTML_PATH = OUT_PATH / "Healthcheck_Portal.html"
+LEGACY_HTML_GLOB = "Healthcheck_*.html"
+
 CONFIG_DIR = PROJECT_ROOT / "app" / "config"
 FRONTEND_DIR = PROJECT_ROOT / "frontend"
-SECTIONS_YAML = CONFIG_DIR / "sections.yaml"
+SECTIONS_JSON = CONFIG_DIR / "sections.json"
+LEGACY_PY = HEALTHCHECK_DIR / "gerar_html_legacy.py"
+if not LEGACY_PY.exists():
+    LEGACY_PY = HEALTHCHECK_DIR / "html (13).py"

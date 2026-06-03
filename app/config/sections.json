@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "maxBlocksPerPage": 8,
   "maxSubsectionsPerSection": 5,
   "sections": [
@@ -7,195 +7,720 @@
       "id": "executive",
       "title": "Executive Overview",
       "icon": "📊",
-      "description": "Leitura rápida para liderança — principais sinais do negócio.",
+      "description": "Leitura rápida para liderança.",
       "subsections": [
-        {"id": "snapshot", "title": "Snapshot Executivo", "question": "Como está o time agora?", "decision": "Priorizar frentes de atenção imediata.", "blocks": ["kpi_consultores", "kpi_painel", "kpi_vis_dia", "kpi_cobertura", "kpi_mccp", "chart_series_team", "insight_executive", "methodology"]},
-        {"id": "alertas", "title": "Alertas Prioritários", "question": "O que exige ação urgente?", "decision": "Escalar correções com GD/SF.", "blocks": ["table_alertas", "kpi_ausencia", "kpi_overlap", "insight_alertas", "methodology"]},
-        {"id": "evolucao", "title": "Evolução Geral", "question": "O time está melhorando ou piorando?", "decision": "Ajustar plano trimestral.", "blocks": ["chart_series_team", "kpi_vis_total", "insight_tendencia", "methodology"]},
-        {"id": "resumo_sf", "title": "Resumo por Sales Force", "question": "Qual SF puxa o resultado?", "decision": "Balancear suporte entre SFs.", "blocks": ["table_sf", "ranking_sf", "insight_sf", "methodology"]},
-        {"id": "resumo_gd", "title": "Resumo por GD", "question": "Qual GD precisa de coaching?", "decision": "Focar visitas de campo com GD.", "blocks": ["table_gd", "ranking_gd", "insight_gd", "methodology"]}
+        {
+          "id": "snapshot",
+          "title": "Snapshot Executivo",
+          "legacyVista": "overview",
+          "legacyAnchor": null,
+          "question": "Como está o time agora?",
+          "decision": "Priorizar frentes imediatas."
+        },
+        {
+          "id": "alertas",
+          "title": "Alertas Prioritários",
+          "legacyVista": "overview",
+          "legacyAnchor": "kpi-grid",
+          "question": "O que exige ação urgente?",
+          "decision": "Escalar com GD/SF."
+        },
+        {
+          "id": "evolucao",
+          "title": "Evolução Geral",
+          "legacyVista": "timeline",
+          "legacyAnchor": null,
+          "question": "Melhora ou piora?",
+          "decision": "Ajustar plano trimestral."
+        },
+        {
+          "id": "resumo_sf",
+          "title": "Resumo por Sales Force",
+          "legacyVista": "overview",
+          "legacyAnchor": "sf-block",
+          "question": "Qual SF puxa resultado?",
+          "decision": "Balancear suporte."
+        },
+        {
+          "id": "resumo_gd",
+          "title": "Resumo por GD",
+          "legacyVista": "overview",
+          "legacyAnchor": "gd-summary-block",
+          "question": "Qual GD precisa coaching?",
+          "decision": "Visita de campo."
+        }
       ]
     },
     {
       "id": "performance",
       "title": "Performance Comercial",
       "icon": "🎯",
-      "description": "Produtividade comercial e execução do time.",
+      "description": "Produtividade e execução.",
       "subsections": [
-        {"id": "geral", "title": "Produtividade Geral", "question": "O time está visitando na cadência esperada?", "decision": "Ajustar metas de visitas/dia.", "blocks": ["kpi_vis_dia", "kpi_vis_total", "kpi_dias_trabalhados", "chart_series_visitas", "insight_produtividade", "methodology"]},
-        {"id": "por_consultor", "title": "Performance por Consultor", "question": "Quem está acima/abaixo da média?", "decision": "Coaching individual.", "blocks": ["table_consultores", "ranking_vis_dia", "insight_performance", "methodology"]},
-        {"id": "alta", "title": "Ranking Alta Performance", "question": "Quem são os benchmarks internos?", "decision": "Replicar boas práticas.", "blocks": ["ranking_top_vis", "ranking_top_mccp", "insight_alta", "methodology"]},
-        {"id": "baixa", "title": "Ranking Baixa Performance", "question": "Quem precisa de plano de recuperação?", "decision": "Plano de ação prioritário.", "blocks": ["ranking_bottom_vis", "ranking_bottom_mccp", "insight_baixa", "methodology"]},
-        {"id": "mat_vs_recente", "title": "Comparativo MAT vs Recente", "question": "A melhora é sustentável?", "decision": "Validar se pico é sazonal.", "blocks": ["kpi_mat_3m", "kpi_mat_1m", "table_janelas", "insight_janela", "methodology"]}
+        {
+          "id": "geral",
+          "title": "Produtividade Geral",
+          "legacyVista": "overview",
+          "legacyAnchor": "svg-hist-visitas",
+          "question": "Cadência de visitas?",
+          "decision": "Metas visitas/dia."
+        },
+        {
+          "id": "por_consultor",
+          "title": "Detalhe por Consultor",
+          "legacyVista": "detail",
+          "legacyAnchor": null,
+          "question": "Quem está acima/abaixo?",
+          "decision": "Coaching 1:1."
+        },
+        {
+          "id": "alta",
+          "title": "Alta Performance",
+          "legacyVista": "detail",
+          "legacyAnchor": null,
+          "question": "Benchmarks internos?",
+          "decision": "Replicar práticas."
+        },
+        {
+          "id": "baixa",
+          "title": "Baixa Performance",
+          "legacyVista": "detail",
+          "legacyAnchor": null,
+          "question": "Quem recuperar?",
+          "decision": "Plano prioritário."
+        },
+        {
+          "id": "mat_vs_recente",
+          "title": "MAT vs Recente",
+          "legacyVista": "historico",
+          "legacyAnchor": null,
+          "question": "Melhora sustentável?",
+          "decision": "Validar sazonalidade."
+        }
       ]
     },
     {
       "id": "cobertura",
       "title": "Cobertura e Painel",
       "icon": "🩺",
-      "description": "Cobertura dos médicos certos no plano.",
+      "description": "Médicos certos no plano.",
       "subsections": [
-        {"id": "mccp", "title": "Cobertura MCCP", "question": "Estamos cobrindo os HCPs do plano?", "decision": "Reforçar cobertura MCCP.", "blocks": ["kpi_mccp_cumprido", "kpi_mccp_freq", "kpi_pct_dentro_mccp", "table_consultores_mccp", "insight_mccp", "methodology"]},
-        {"id": "f2f", "title": "Cobertura F2F", "question": "Quantos alvos receberam F2F?", "decision": "Priorizar médicos descobertos.", "blocks": ["kpi_cobertura_f2f", "kpi_cobertura_multi", "ranking_cobertura", "insight_cobertura", "methodology"]},
-        {"id": "fora_painel", "title": "Fora de Painel", "question": "Há visitas fora do painel?", "decision": "Reduzir esforço não planejado.", "blocks": ["kpi_fora_mccp", "table_fora_painel", "insight_fora", "methodology"]},
-        {"id": "turnover", "title": "Turnover de Painel", "question": "O painel está estável?", "decision": "Revisar movimentações de painel.", "blocks": ["kpi_turnover", "table_turnover", "insight_turnover", "methodology"]},
-        {"id": "parados", "title": "Médicos Parados", "question": "Quem não foi visitado?", "decision": "Ativar médicos parados.", "blocks": ["table_nao_visitados", "ranking_gap_cobertura", "insight_parados", "export_hint", "methodology"]}
+        {
+          "id": "mccp",
+          "title": "Cobertura MCCP",
+          "legacyVista": "visitation",
+          "legacyAnchor": null,
+          "question": "Cobrimos o plano?",
+          "decision": "Reforçar MCCP."
+        },
+        {
+          "id": "f2f",
+          "title": "Cobertura F2F / ICP",
+          "legacyVista": "visitation",
+          "legacyAnchor": null,
+          "question": "F2F nos alvos?",
+          "decision": "Médicos descobertos."
+        },
+        {
+          "id": "fora_painel",
+          "title": "Fora de Painel",
+          "legacyVista": "visitation",
+          "legacyAnchor": null,
+          "question": "Visitas fora do plano?",
+          "decision": "Reduzir fora MCCP."
+        },
+        {
+          "id": "turnover",
+          "title": "Turnover de Painel",
+          "legacyVista": "visitation",
+          "legacyAnchor": null,
+          "question": "Painel estável?",
+          "decision": "Revisar movimentações."
+        },
+        {
+          "id": "parados",
+          "title": "Médicos Parados",
+          "legacyVista": "detail",
+          "legacyAnchor": null,
+          "question": "Quem não visitou?",
+          "decision": "Ativar parados."
+        }
       ]
     },
     {
       "id": "visitacao",
       "title": "Visitação e Frequência",
       "icon": "📅",
-      "description": "Ritmo, cadência e consistência de visitação.",
+      "description": "Ritmo e cadência.",
       "subsections": [
-        {"id": "frequencia", "title": "Frequência Real", "question": "Qual a frequência média por médico?", "decision": "Ajustar cadência por perfil.", "blocks": ["kpi_freq_medico", "kpi_medicos_unicos", "chart_freq_dist", "insight_freq", "methodology"]},
-        {"id": "consistencia", "title": "Consistência Mensal", "question": "O time visita todo mês?", "decision": "Corrigir buracos mensais.", "blocks": ["chart_series_team", "table_consistencia", "insight_consistencia", "methodology"]},
-        {"id": "por_dia", "title": "Visitas por Dia", "question": "A distribuição diária é saudável?", "decision": "Evitar concentração em poucos dias.", "blocks": ["kpi_vis_dia", "ranking_vis_dia", "insight_dia", "methodology"]},
-        {"id": "sazonalidade", "title": "Sazonalidade", "question": "Há meses sistematicamente fracos?", "decision": "Planejar reforço sazonal.", "blocks": ["chart_series_visitas", "insight_sazonal", "methodology"]},
-        {"id": "medico_freq", "title": "Médico × Frequência", "question": "Quais médicos estão sub-frequentes?", "decision": "Priorizar médicos 1x.", "blocks": ["chart_freq_dist", "table_freq_baixa", "insight_medico", "methodology"]}
+        {
+          "id": "frequencia",
+          "title": "Frequência Real",
+          "legacyVista": "visitation",
+          "legacyAnchor": null,
+          "question": "Freq. por médico?",
+          "decision": "Ajustar cadência."
+        },
+        {
+          "id": "consistencia",
+          "title": "Consistência Mensal",
+          "legacyVista": "timeline",
+          "legacyAnchor": null,
+          "question": "Visitas todo mês?",
+          "decision": "Corrigir buracos."
+        },
+        {
+          "id": "por_dia",
+          "title": "Visitas por Dia",
+          "legacyVista": "overview",
+          "legacyAnchor": "svg-hist-visitas",
+          "question": "Distribuição diária?",
+          "decision": "Evitar picos."
+        },
+        {
+          "id": "sazonalidade",
+          "title": "Sazonalidade",
+          "legacyVista": "timeline",
+          "legacyAnchor": null,
+          "question": "Meses fracos?",
+          "decision": "Reforço sazonal."
+        },
+        {
+          "id": "medico_freq",
+          "title": "Médico × Frequência",
+          "legacyVista": "visitation",
+          "legacyAnchor": null,
+          "question": "Sub-frequentes?",
+          "decision": "Priorizar 1x."
+        }
       ]
     },
     {
       "id": "territorio",
       "title": "Eficiência Territorial",
       "icon": "🗺️",
-      "description": "Território bem desenhado e bem executado.",
+      "description": "Território e deslocamento.",
       "subsections": [
-        {"id": "perfil_setor", "title": "Perfil de Setor", "question": "O setor é local ou viagem?", "decision": "Adequar meta ao perfil.", "blocks": ["kpi_tipo_setor", "table_tipo_setor", "insight_setor", "methodology"]},
-        {"id": "deslocamento", "title": "Deslocamento", "question": "Há excesso de viagem?", "decision": "Otimizar rota e sede.", "blocks": ["kpi_viagem", "table_deslocamento", "insight_desloc", "methodology"]},
-        {"id": "brickagem", "title": "Brickagem", "question": "Bricks estão sendo visitados?", "decision": "Corrigir brickagem subutilizada.", "blocks": ["kpi_brickagem", "table_brickagem", "insight_brick", "methodology"]},
-        {"id": "geo", "title": "Cobertura Geográfica", "question": "Visitas na UF/cidade sede?", "decision": "Reduzir visitas fora da sede.", "blocks": ["kpi_uf_sede", "table_geo", "insight_geo", "methodology"]},
-        {"id": "score", "title": "Score de Território", "question": "Qual o score territorial do time?", "decision": "Priorizar territórios críticos.", "blocks": ["kpi_score_territorio", "ranking_score", "insight_score", "methodology"]}
+        {
+          "id": "perfil_setor",
+          "title": "Perfil de Setor",
+          "legacyVista": "setor",
+          "legacyAnchor": null,
+          "question": "Local ou viagem?",
+          "decision": "Metas por perfil."
+        },
+        {
+          "id": "deslocamento",
+          "title": "Deslocamento",
+          "legacyVista": "setor",
+          "legacyAnchor": null,
+          "question": "Excesso viagem?",
+          "decision": "Otimizar rota."
+        },
+        {
+          "id": "brickagem",
+          "title": "Brickagem",
+          "legacyVista": "setor",
+          "legacyAnchor": null,
+          "question": "Bricks visitados?",
+          "decision": "Corrigir brickagem."
+        },
+        {
+          "id": "geo",
+          "title": "Cobertura Geográfica",
+          "legacyVista": "setor",
+          "legacyAnchor": null,
+          "question": "UF/cidade sede?",
+          "decision": "Reduzir fora sede."
+        },
+        {
+          "id": "score",
+          "title": "Score de Território",
+          "legacyVista": "setor",
+          "legacyAnchor": null,
+          "question": "Score territorial?",
+          "decision": "Territórios críticos."
+        }
       ]
     },
     {
       "id": "ausencias",
       "title": "Ausências e Capacidade",
       "icon": "⏸️",
-      "description": "Perda de capacidade e dias não explicados.",
+      "description": "Capacidade e gaps.",
       "subsections": [
-        {"id": "total", "title": "Ausência Total", "question": "Qual o % de ausência do time?", "decision": "Controlar ausência agregada.", "blocks": ["kpi_ausencia", "chart_ausencia", "insight_ausencia", "methodology"]},
-        {"id": "produtiva", "title": "Ausência Produtiva", "question": "Treinamento/congresso consomem capacidade?", "decision": "Balancear desenvolvimento.", "blocks": ["kpi_treinamento", "kpi_congressos", "table_ausencia_tipo", "methodology"]},
-        {"id": "pessoal", "title": "Ausência Pessoal", "question": "Ausências pessoais estão altas?", "decision": "Acompanhar com RH/GD.", "blocks": ["kpi_pessoais", "table_pessoais", "insight_pessoal", "methodology"]},
-        {"id": "capacidade", "title": "Capacidade Disponível", "question": "Sobra capacidade para cobrir painel?", "decision": "Simular capacidade.", "blocks": ["kpi_capacidade", "kpi_gap_capacidade", "insight_capacidade", "methodology"]},
-        {"id": "gap", "title": "Gap Não Explicado", "question": "Há dias sem visita e sem ausência?", "decision": "Investigar sub-report.", "blocks": ["table_gap_dias", "insight_gap", "methodology"]}
+        {
+          "id": "total",
+          "title": "Ausência Total",
+          "legacyVista": "absence",
+          "legacyAnchor": null,
+          "question": "% ausência?",
+          "decision": "Controlar agregado."
+        },
+        {
+          "id": "produtiva",
+          "title": "Ausência Produtiva",
+          "legacyVista": "absence",
+          "legacyAnchor": null,
+          "question": "Treinamento/congresso?",
+          "decision": "Balancear dev."
+        },
+        {
+          "id": "pessoal",
+          "title": "Ausência Pessoal",
+          "legacyVista": "absence",
+          "legacyAnchor": null,
+          "question": "Pessoais altos?",
+          "decision": "RH/GD."
+        },
+        {
+          "id": "capacidade",
+          "title": "Capacidade",
+          "legacyVista": "simulator",
+          "legacyAnchor": null,
+          "question": "Cabe na capacidade?",
+          "decision": "Simular cenários."
+        },
+        {
+          "id": "gap",
+          "title": "Gap Não Explicado",
+          "legacyVista": "absence",
+          "legacyAnchor": null,
+          "question": "Dias sem visita/ausência?",
+          "decision": "Sub-report."
+        }
       ]
     },
     {
       "id": "especialidades",
       "title": "Especialidades e Franquias",
       "icon": "🔬",
-      "description": "Esforço nas especialidades estratégicas por franquia.",
+      "description": "Camada estratégica (config).",
       "subsections": [
-        {"id": "visao_geral", "title": "Visão Geral", "question": "O esforço está nas especialidades certas?", "decision": "Realinhar foco por franquia.", "blocks": ["kpi_especialidade_placeholder", "insight_esp", "methodology"]},
-        {"id": "matriz", "title": "Matriz Especialidade × Franquia", "question": "Quais combinações têm maior gap?", "decision": "Heatmap de priorização.", "blocks": ["table_matriz_esp", "insight_matriz", "methodology"]},
-        {"id": "cobertura_franquia", "title": "Cobertura por Franquia", "question": "Médicos relevantes estão cobertos?", "decision": "Plano por franquia.", "blocks": ["table_sf_cobertura", "insight_franquia", "methodology"]},
-        {"id": "gaps_hierarquia", "title": "Gaps por Consultor/SF/GD", "question": "Quem tem maior gap estratégico?", "decision": "Ranking de correção.", "blocks": ["ranking_gap_cobertura", "table_consultores", "methodology"]},
-        {"id": "prioritarios", "title": "Médicos Prioritários", "question": "Quem entra no plano de ação?", "decision": "Exportar lista de ativação.", "blocks": ["table_nao_visitados", "export_hint", "methodology"]}
+        {
+          "id": "visao_geral",
+          "title": "Visão Geral",
+          "legacyVista": "gloss",
+          "legacyAnchor": null,
+          "question": "Especialidades certas?",
+          "decision": "Ver glossário + CSV futuro."
+        },
+        {
+          "id": "matriz",
+          "title": "Matriz Esp. × Franquia",
+          "legacyVista": "gloss",
+          "legacyAnchor": null,
+          "question": "Combinações críticas?",
+          "decision": "Config franquias."
+        },
+        {
+          "id": "cobertura_franquia",
+          "title": "Por Franquia",
+          "legacyVista": "perfindex",
+          "legacyAnchor": null,
+          "question": "Relevantes cobertos?",
+          "decision": "Plano franquia."
+        },
+        {
+          "id": "gaps_hierarquia",
+          "title": "Gaps Consultor/SF",
+          "legacyVista": "detail",
+          "legacyAnchor": null,
+          "question": "Maior gap?",
+          "decision": "Ranking correção."
+        },
+        {
+          "id": "prioritarios",
+          "title": "Médicos Prioritários",
+          "legacyVista": "detail",
+          "legacyAnchor": null,
+          "question": "Plano de ação?",
+          "decision": "Export na tabela."
+        }
       ]
     },
     {
       "id": "qualidade",
       "title": "Qualidade de Execução",
       "icon": "✅",
-      "description": "Aderência ao plano, canais e cadastro.",
+      "description": "Aderência e cadastro.",
       "subsections": [
-        {"id": "plano", "title": "Aderência ao Plano", "question": "Visitas estão no plano?", "decision": "Reduzir fora do MCCP.", "blocks": ["kpi_pct_dentro_mccp", "kpi_fora_mccp", "insight_plano", "methodology"]},
-        {"id": "canal", "title": "Execução por Canal", "question": "Mix de canais está adequado?", "decision": "Balancear F2F e remoto.", "blocks": ["kpi_cobertura_multi", "kpi_cobertura_f2f", "methodology"]},
-        {"id": "segmentacao", "title": "Segmentação", "question": "Segmentos recebem esforço proporcional?", "decision": "Revisar segmentação.", "blocks": ["table_consultores", "insight_segmento", "methodology"]},
-        {"id": "esp_operacional", "title": "Especialidade Operacional", "question": "Cadastro de especialidade está ok?", "decision": "Saneamento de cadastro.", "blocks": ["insight_cadastro", "methodology"]},
-        {"id": "cadastro", "title": "Qualidade de Cadastro", "question": "Há inconsistências de cadastro?", "decision": "Export de saneamento.", "blocks": ["export_hint", "methodology"]}
+        {
+          "id": "plano",
+          "title": "Aderência ao Plano",
+          "legacyVista": "visitation",
+          "legacyAnchor": null,
+          "question": "No plano?",
+          "decision": "Reduzir fora MCCP."
+        },
+        {
+          "id": "canal",
+          "title": "Execução por Canal",
+          "legacyVista": "perfindex",
+          "legacyAnchor": null,
+          "question": "Mix canais?",
+          "decision": "F2F vs remoto."
+        },
+        {
+          "id": "segmentacao",
+          "title": "Segmentação",
+          "legacyVista": "detail",
+          "legacyAnchor": null,
+          "question": "Esforço proporcional?",
+          "decision": "Revisar seg."
+        },
+        {
+          "id": "esp_operacional",
+          "title": "Especialidade Operacional",
+          "legacyVista": "detail",
+          "legacyAnchor": null,
+          "question": "Cadastro OK?",
+          "decision": "Saneamento."
+        },
+        {
+          "id": "cadastro",
+          "title": "Qualidade Cadastro",
+          "legacyVista": "gloss",
+          "legacyAnchor": null,
+          "question": "Inconsistências?",
+          "decision": "Regras no glossário."
+        }
       ]
     },
     {
       "id": "overlap",
       "title": "Overlap e Conflitos",
       "icon": "🔀",
-      "description": "Sobreposição e conflitos de atuação.",
+      "description": "Sobreposição de atuação.",
       "subsections": [
-        {"id": "intra", "title": "Overlap Intra-Time", "question": "Há médicos compartilhados no time?", "decision": "Redistribuir painel.", "blocks": ["kpi_overlap", "table_overlap", "insight_overlap", "methodology"]},
-        {"id": "cross", "title": "Overlap Cross-Team", "question": "Há conflito entre times?", "decision": "Governança cross-team.", "blocks": ["table_overlap_cross", "methodology"]},
-        {"id": "compartilhados", "title": "Médicos Compartilhados", "question": "Quantos MDMs são compartilhados?", "decision": "Resolver duplicidade.", "blocks": ["kpi_shared", "table_pares", "methodology"]},
-        {"id": "territorio", "title": "Conflitos de Território", "question": "Territórios se sobrepõem?", "decision": "Ajustar brickagem.", "blocks": ["insight_territorio_overlap", "methodology"]},
-        {"id": "redistribuicao", "title": "Redistribuição", "question": "Onde redistribuir médicos?", "decision": "Plano de redistribuição.", "blocks": ["table_pares", "insight_redist", "methodology"]}
+        {
+          "id": "intra",
+          "title": "Overlap Intra-Time",
+          "legacyVista": "overlap",
+          "legacyAnchor": null,
+          "question": "Compartilhados?",
+          "decision": "Redistribuir."
+        },
+        {
+          "id": "cross",
+          "title": "Overlap Cross-Team",
+          "legacyVista": "overlap",
+          "legacyAnchor": null,
+          "question": "Conflito times?",
+          "decision": "Governança."
+        },
+        {
+          "id": "compartilhados",
+          "title": "Médicos Compartilhados",
+          "legacyVista": "overlap",
+          "legacyAnchor": null,
+          "question": "Quantos MDMs?",
+          "decision": "Resolver dup."
+        },
+        {
+          "id": "territorio",
+          "title": "Conflitos Território",
+          "legacyVista": "setor",
+          "legacyAnchor": null,
+          "question": "Sobreposição geo?",
+          "decision": "Brickagem."
+        },
+        {
+          "id": "redistribuicao",
+          "title": "Redistribuição",
+          "legacyVista": "overlap",
+          "legacyAnchor": null,
+          "question": "Onde redistribuir?",
+          "decision": "Plano painel."
+        }
       ]
     },
     {
       "id": "simulador",
       "title": "Simulador e Planejamento",
       "icon": "🧮",
-      "description": "Cenários futuros e capacidade.",
+      "description": "Cenários e metas.",
       "subsections": [
-        {"id": "capacidade", "title": "Simulador de Capacidade", "question": "A meta cabe na capacidade?", "decision": "Ajustar meta ou headcount.", "blocks": ["kpi_meta_painel", "kpi_meta_vis_dia", "kpi_capacidade", "insight_sim", "methodology"]},
-        {"id": "perfil", "title": "Por Perfil Territorial", "question": "Meta por perfil de setor?", "decision": "Metas diferenciadas.", "blocks": ["table_tipo_setor", "methodology"]},
-        {"id": "cobertura_plan", "title": "Planejamento de Cobertura", "question": "Cobertura possível com capacidade?", "decision": "Priorizar MCCP.", "blocks": ["kpi_cobertura_f2f", "kpi_mccp", "insight_plan", "methodology"]},
-        {"id": "painel", "title": "Redistribuição de Painel", "question": "Painel está sobrecarregado?", "decision": "Redistribuir painel.", "blocks": ["kpi_painel", "table_painel_alto", "methodology"]},
-        {"id": "cenarios", "title": "Cenários Executivos", "question": "Qual cenário recomendado?", "decision": "Apresentar à liderança.", "blocks": ["insight_cenario", "methodology"]}
+        {
+          "id": "capacidade",
+          "title": "Simulador de Capacidade",
+          "legacyVista": "simulator",
+          "legacyAnchor": null,
+          "question": "Meta cabe?",
+          "decision": "Ajustar meta."
+        },
+        {
+          "id": "perfil",
+          "title": "Por Perfil Territorial",
+          "legacyVista": "simulator",
+          "legacyAnchor": null,
+          "question": "Meta por perfil?",
+          "decision": "Diferenciar."
+        },
+        {
+          "id": "cobertura_plan",
+          "title": "Planejamento Cobertura",
+          "legacyVista": "simulator",
+          "legacyAnchor": null,
+          "question": "Cobertura possível?",
+          "decision": "Priorizar MCCP."
+        },
+        {
+          "id": "painel",
+          "title": "Redistribuição Painel",
+          "legacyVista": "simulator",
+          "legacyAnchor": null,
+          "question": "Painel sobrecarregado?",
+          "decision": "Redistribuir."
+        },
+        {
+          "id": "cenarios",
+          "title": "Cenários Executivos",
+          "legacyVista": "simulator",
+          "legacyAnchor": null,
+          "question": "Cenário recomendado?",
+          "decision": "Liderança."
+        }
       ]
     },
     {
       "id": "oportunidades",
       "title": "Oportunidades e Plano de Ação",
       "icon": "🚀",
-      "description": "Onde agir primeiro — consolidação de gaps.",
+      "description": "Onde agir primeiro.",
       "subsections": [
-        {"id": "prioritarias", "title": "Oportunidades Prioritárias", "question": "Onde agir primeiro?", "decision": "Top 5 ações do mês.", "blocks": ["insight_oportunidades", "ranking_gap_cobertura", "methodology"]},
-        {"id": "por_consultor", "title": "Plano por Consultor", "question": "Qual plano por REP?", "decision": "1:1 com consultores.", "blocks": ["table_plano_consultor", "methodology"]},
-        {"id": "por_sf_gd", "title": "Plano por SF/GD", "question": "Qual plano por liderança?", "decision": "Reunião de SF/GD.", "blocks": ["table_sf", "table_gd", "methodology"]},
-        {"id": "ativacao", "title": "Médicos para Ativação", "question": "Quem ativar esta semana?", "decision": "Lista de ativação.", "blocks": ["table_nao_visitados", "export_hint", "methodology"]},
-        {"id": "backlog", "title": "Backlog Operacional", "question": "O que ficou pendente?", "decision": "Backlog priorizado.", "blocks": ["insight_backlog", "methodology"]}
+        {
+          "id": "prioritarias",
+          "title": "Prioritárias",
+          "legacyVista": "detail",
+          "legacyAnchor": null,
+          "question": "Top ações?",
+          "decision": "Foco mensal."
+        },
+        {
+          "id": "por_consultor",
+          "title": "Por Consultor",
+          "legacyVista": "detail",
+          "legacyAnchor": null,
+          "question": "Plano REP?",
+          "decision": "1:1."
+        },
+        {
+          "id": "por_sf_gd",
+          "title": "Por SF/GD",
+          "legacyVista": "overview",
+          "legacyAnchor": "sf-block",
+          "question": "Plano liderança?",
+          "decision": "Reunião SF."
+        },
+        {
+          "id": "ativacao",
+          "title": "Ativação Médicos",
+          "legacyVista": "detail",
+          "legacyAnchor": null,
+          "question": "Quem ativar?",
+          "decision": "Lista semana."
+        },
+        {
+          "id": "backlog",
+          "title": "Backlog Operacional",
+          "legacyVista": "detail",
+          "legacyAnchor": null,
+          "question": "Pendências?",
+          "decision": "Priorizar."
+        }
       ]
     },
     {
       "id": "governanca",
       "title": "Governança e Auditoria",
       "icon": "📋",
-      "description": "Confiança nos dados e metodologia.",
+      "description": "Metodologia e fontes.",
       "subsections": [
-        {"id": "fontes", "title": "Fontes de Dados", "question": "Quais bases foram usadas?", "decision": "Validar fontes.", "blocks": ["meta_fontes", "methodology"]},
-        {"id": "exclusoes", "title": "Regras de Exclusão", "question": "O que foi excluído?", "decision": "Transparência de cortes.", "blocks": ["meta_exclusoes", "methodology"]},
-        {"id": "dedup", "title": "Deduplicação", "question": "Como foram deduplicadas ausências?", "decision": "Auditar dedup.", "blocks": ["meta_dedup", "methodology"]},
-        {"id": "indicadores", "title": "Metodologia dos Indicadores", "question": "Como cada KPI é calculado?", "decision": "Glossário oficial.", "blocks": ["glossary", "methodology"]},
-        {"id": "completude", "title": "Qualidade e Completude", "question": "Os dados estão completos?", "decision": "Corrigir lacunas.", "blocks": ["meta_completude", "methodology"]}
+        {
+          "id": "fontes",
+          "title": "Fontes de Dados",
+          "legacyVista": "gloss",
+          "legacyAnchor": null,
+          "question": "Quais bases?",
+          "decision": "Validar fontes."
+        },
+        {
+          "id": "exclusoes",
+          "title": "Regras de Exclusão",
+          "legacyVista": "gloss",
+          "legacyAnchor": null,
+          "question": "O que excluído?",
+          "decision": "Transparência."
+        },
+        {
+          "id": "dedup",
+          "title": "Deduplicação",
+          "legacyVista": "gloss",
+          "legacyAnchor": null,
+          "question": "Como dedup?",
+          "decision": "dedup_audit.csv."
+        },
+        {
+          "id": "indicadores",
+          "title": "Metodologia KPIs",
+          "legacyVista": "gloss",
+          "legacyAnchor": null,
+          "question": "Como calcula?",
+          "decision": "Glossário."
+        },
+        {
+          "id": "completude",
+          "title": "Completude",
+          "legacyVista": "gloss",
+          "legacyAnchor": null,
+          "question": "Dados completos?",
+          "decision": "Corrigir lacunas."
+        }
       ]
     },
     {
       "id": "canal_digital",
       "title": "Canal Digital e Multicanal",
       "icon": "💻",
-      "description": "Engajamento digital e cobertura multicanal.",
+      "description": "F2F vs multicanal.",
       "subsections": [
-        {"id": "visao", "title": "Visão Multicanal", "question": "Qual o mix F2F vs remoto?", "decision": "Balancear canais.", "blocks": ["kpi_cobertura_multi", "kpi_cobertura_f2f", "insight_canal", "methodology"]},
-        {"id": "remoto", "title": "Cobertura Remota", "question": "Remoto compensa gap F2F?", "decision": "Priorizar F2F em decisores.", "blocks": ["kpi_gap_f2f_multi", "methodology"]},
-        {"id": "digital", "title": "Execução Digital", "question": "Digital está na meta?", "decision": "Plano digital.", "blocks": ["insight_digital", "methodology"]},
-        {"id": "comparativo", "title": "Comparativo por SF", "question": "Qual SF usa mais multicanal?", "decision": "Benchmark interno.", "blocks": ["table_sf_cobertura", "methodology"]},
-        {"id": "evolucao", "title": "Evolução Multicanal", "question": "Multicanal cresce no MAT?", "decision": "Tendência de canal.", "blocks": ["chart_series_team", "methodology"]}
+        {
+          "id": "visao",
+          "title": "Visão Multicanal",
+          "legacyVista": "perfindex",
+          "legacyAnchor": null,
+          "question": "Mix F2F/remoto?",
+          "decision": "Balancear."
+        },
+        {
+          "id": "remoto",
+          "title": "Cobertura Remota",
+          "legacyVista": "perfindex",
+          "legacyAnchor": null,
+          "question": "Remoto compensa?",
+          "decision": "F2F decisores."
+        },
+        {
+          "id": "digital",
+          "title": "Execução Digital",
+          "legacyVista": "perfindex",
+          "legacyAnchor": null,
+          "question": "Na meta?",
+          "decision": "Plano digital."
+        },
+        {
+          "id": "comparativo",
+          "title": "Por SF",
+          "legacyVista": "overview",
+          "legacyAnchor": "sf-block",
+          "question": "SF mais multicanal?",
+          "decision": "Benchmark."
+        },
+        {
+          "id": "evolucao",
+          "title": "Evolução Multicanal",
+          "legacyVista": "historico",
+          "legacyAnchor": null,
+          "question": "Tendência?",
+          "decision": "Acompanhar MAT."
+        }
       ]
     },
     {
       "id": "benchmarking",
       "title": "Benchmarking e Metas",
       "icon": "📈",
-      "description": "Metas vs realizado e benchmarks internos.",
+      "description": "Meta vs realizado.",
       "subsections": [
-        {"id": "metas_globais", "title": "Metas Globais", "question": "Time bate meta de painel/visita?", "decision": "Ajustar meta.", "blocks": ["kpi_meta_painel", "kpi_meta_vis_dia", "kpi_painel", "kpi_vis_dia", "methodology"]},
-        {"id": "vs_meta", "title": "Realizado vs Meta", "question": "Qual o gap para meta?", "decision": "Fechamento de gap.", "blocks": ["insight_meta", "table_consultores", "methodology"]},
-        {"id": "quartis", "title": "Quartis de Performance", "question": "Distribuição do time?", "decision": "Mover mediana.", "blocks": ["kpi_painel_mediano", "kpi_vis_dia_mediana", "methodology"]},
-        {"id": "sf_benchmark", "title": "Benchmark por SF", "question": "Qual SF é referência?", "decision": "Sharing entre SFs.", "blocks": ["table_sf", "ranking_sf", "methodology"]},
-        {"id": "historico_meta", "title": "Histórico de Metas", "question": "Metas evoluíram no MAT?", "decision": "Revisar anual.", "blocks": ["chart_series_team", "methodology"]}
+        {
+          "id": "metas_globais",
+          "title": "Metas Globais",
+          "legacyVista": "overview",
+          "legacyAnchor": "kpi-grid",
+          "question": "Bate meta?",
+          "decision": "Ajustar."
+        },
+        {
+          "id": "vs_meta",
+          "title": "Realizado vs Meta",
+          "legacyVista": "simulator",
+          "legacyAnchor": null,
+          "question": "Gap meta?",
+          "decision": "Fechamento."
+        },
+        {
+          "id": "quartis",
+          "title": "Quartis",
+          "legacyVista": "overview",
+          "legacyAnchor": null,
+          "question": "Distribuição?",
+          "decision": "Mover mediana."
+        },
+        {
+          "id": "sf_benchmark",
+          "title": "Benchmark SF",
+          "legacyVista": "overview",
+          "legacyAnchor": "sf-block",
+          "question": "SF referência?",
+          "decision": "Sharing."
+        },
+        {
+          "id": "historico_meta",
+          "title": "Histórico Metas",
+          "legacyVista": "historico",
+          "legacyAnchor": null,
+          "question": "Evoluiu?",
+          "decision": "Revisar anual."
+        }
       ]
     },
     {
       "id": "relacionamento",
       "title": "Relacionamento e Engajamento",
       "icon": "🤝",
-      "description": "Profundidade de relacionamento e recorrência.",
+      "description": "Profundidade e recorrência.",
       "subsections": [
-        {"id": "recorrencia", "title": "Recorrência de Visitas", "question": "Médicos são revisitados?", "decision": "Aumentar recorrência.", "blocks": ["chart_freq_dist", "kpi_freq_medico", "methodology"]},
-        {"id": "profundidade", "title": "Profundidade", "question": "Há médicos com 1 única visita?", "decision": "Segunda visita prioritária.", "blocks": ["insight_profundidade", "methodology"]},
-        {"id": "vip", "title": "Médicos Alta Prioridade", "question": "Decisores estão bem servidos?", "decision": "Plano VIP.", "blocks": ["table_mccp_top", "methodology"]},
-        {"id": "engajamento_sf", "title": "Engajamento por SF", "question": "Qual SF engaja mais?", "decision": "Replicar práticas.", "blocks": ["table_sf", "methodology"]},
-        {"id": "plano_rel", "title": "Plano de Relacionamento", "question": "Próximos passos de relacionamento?", "decision": "CRM tático.", "blocks": ["insight_relacionamento", "export_hint", "methodology"]}
+        {
+          "id": "recorrencia",
+          "title": "Recorrência",
+          "legacyVista": "visitation",
+          "legacyAnchor": null,
+          "question": "Revisitados?",
+          "decision": "2ª visita."
+        },
+        {
+          "id": "profundidade",
+          "title": "Profundidade",
+          "legacyVista": "visitation",
+          "legacyAnchor": null,
+          "question": "Só 1 visita?",
+          "decision": "Priorizar."
+        },
+        {
+          "id": "vip",
+          "title": "Alta Prioridade",
+          "legacyVista": "detail",
+          "legacyAnchor": null,
+          "question": "Decisores?",
+          "decision": "Plano VIP."
+        },
+        {
+          "id": "engajamento_sf",
+          "title": "Por SF",
+          "legacyVista": "overview",
+          "legacyAnchor": "sf-block",
+          "question": "SF engaja mais?",
+          "decision": "Replicar."
+        },
+        {
+          "id": "plano_rel",
+          "title": "Plano Relacionamento",
+          "legacyVista": "historico",
+          "legacyAnchor": null,
+          "question": "Próximos passos?",
+          "decision": "CRM tático."
+        }
       ]
     }
   ]

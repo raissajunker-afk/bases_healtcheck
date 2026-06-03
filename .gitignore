@@ -16,3 +16,5 @@ healthcheck/comparacao_antigo_vs_novo.txt
 # IDE
 .idea/
 .vscode/
+healthcheck/bkp_*/
+healthcheck/divulgacao_healthcheck/

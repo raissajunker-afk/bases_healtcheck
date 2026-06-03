@@ -77,8 +77,12 @@ ISIDS_AFASTADOS = {
 _BASES_PREF = r'C:\Users\delimajr\OneDrive - Merck Sharp & Dohme LLC\Desktop\PY\healthcheck\bases'
 _OUT_PREF   = r'C:\Users\delimajr\OneDrive - Merck Sharp & Dohme LLC\Desktop\PY\healthcheck'
 
-BASES_DIR = _BASES_PREF if os.path.isdir(_BASES_PREF) else '.'
-OUT_DIR   = _OUT_PREF   if os.path.isdir(_OUT_PREF)   else '.'
+_SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+_BASES_FALLBACK = os.path.join(_SCRIPT_DIR, 'bases')
+_OUT_FALLBACK = _SCRIPT_DIR
+
+BASES_DIR = _BASES_PREF if os.path.isdir(_BASES_PREF) else _BASES_FALLBACK
+OUT_DIR   = _OUT_PREF   if os.path.isdir(_OUT_PREF)   else _OUT_FALLBACK
 
 # Helpers pra montar caminho de input/output
 

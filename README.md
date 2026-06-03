@@ -1,59 +1,47 @@
-# Healthcheck Operacional — Portal Analítico
+# Healthcheck Operacional — Portal (a partir do projeto original)
 
-Pipeline **offline** em Python: lê as bases CSV/Excel, aplica as regras de negócio (`processar.py`) e gera um **HTML único** para abrir no navegador (sem servidor).
+Pipeline **offline**: lê as bases da pasta **`healthcheck/bases/`** (como no 7z), roda o **`processar.py` original** (regras de negócio intactas) e gera **`Healthcheck_Portal.html`** — o mesmo dashboard (`html (13).py`) com navegação tipo portal (15 seções).
 
-## Uso no seu computador
+## Uso no seu PC
 
 ```bash
 pip install -r requirements.txt
 python main.py
 ```
 
-**Bases (padrão):**  
-`C:\Users\delimajr\OneDrive - Merck Sharp & Dohme LLC\Desktop\PY\healthcheck\bases`
-
-**Saída (padrão):**  
-`C:\Users\delimajr\OneDrive - Merck Sharp & Dohme LLC\Desktop\PY\healthcheck\Healthcheck_Portal.html`
-
-### Comandos
-
-| Comando | Efeito |
+| Caminho | Padrão |
 |---------|--------|
-| `python main.py` | Processa bases + gera portal |
-| `python main.py --skip-processar` | Só regenera HTML (usa `payload.json` existente) |
-| `python main.py --skip-html` | Só processamento |
-| `python main.py --with-legacy` | Também gera o dashboard antigo (6+ abas) |
-| `python main.py --portal-only` | Só portal (sem reprocessar) |
+| **Bases (entrada)** | `C:\Users\delimajr\OneDrive - Merck Sharp & Dohme LLC\Desktop\PY\healthcheck\bases` |
+| **Saída** | `...\healthcheck\Healthcheck_Portal.html` |
 
-### Variáveis de ambiente (opcional)
+Todos os CSVs/Excel do 7z ficam em **`bases/`** (`relatorio_visitas_*.csv`, `ausencias_de_campo_visao_geral.csv`, `estrutura.xlsx`, `relatorio_painel.csv`, `relatorio_mccp.csv`, etc.). O `processar.py` usa `IN(arquivo)` → `BASES_DIR/arquivo`.
+
+## Comandos
 
 ```bash
-set HEALTHCHECK_BASES_PATH=C:\...\bases
-set HEALTHCHECK_OUT_PATH=C:\...\healthcheck
+python main.py                    # processar + portal
+python main.py --skip-processar   # só HTML (payload já existe)
+python main.py --portal-only      # só regenera portal
+python main.py --with-legacy      # também gera Healthcheck_* legado (barra de abas antiga)
+python scripts/validate_portal.py # confere se o HTML tem dashboard original embutido
 ```
 
-## Estrutura
+## O que mudou vs. tentativa anterior
+
+- **Não** é um portal genérico novo: é o **`html (13).py` completo** (histogramas, simulador, overlap, exports CSV, glossário) + **Home / 15 seções / breadcrumb**.
+- Cada página do portal chama `setTab('overview'|'detail'|...)` — a mesma aba que você já tinha.
+- Configuração das seções: `app/config/sections.json` (campo `legacyVista` por página).
+
+## Estrutura (conteúdo do 7z)
 
 ```text
-main.py                 # Orquestrador
-config.py               # Caminhos Windows + fallback
 healthcheck/
-  processar.py          # Regras de negócio (inalteradas)
-  gerar_html_legacy.py  # Dashboard antigo (opcional)
-  bases/                # CSVs locais / referência
-frontend/
-  html_builder.py       # Monta HTML self-contained
-  css/portal.css
-  js/portal-app.js
-app/config/sections.json  # 15 macro-seções × 5 subseções
+  processar.py          # lê healthcheck/bases/*
+  html (13).py          # fonte do dashboard
+  gerar_html_legacy.py  # cópia para import
+  bases/                # TODAS as bases originais
+main.py
+frontend/portal_builder.py
 ```
 
-## Portal (15 seções)
-
-Navegação: **Home → Macro seção → Subseção → Página** (até 8 blocos: KPIs, gráficos, tabelas, insights, metodologia, CSV).
-
-Ver `ANALISE_CRITICA.md` para o que **não** duplicar do dashboard legado.
-
-## Origem dos dados
-
-O arquivo `healthcheck (3).7z` no repositório contém o projeto completo. Após extrair, use `healthcheck/bases` ou o caminho OneDrive acima.
+Ver `ANALISE_CRITICA.md` para o que cada seção do portal abre no dashboard legado.
