@@ -8,10 +8,14 @@ DEFAULT_BASES_DIR = Path(
     r"C:\Users\delimajr\OneDrive - Merck Sharp & Dohme LLC\Desktop\PY\healthcheck\bases"
 )
 LOCAL_BASES_DIR = ROOT_DIR / "bases"
+LEGACY_ARCHIVE_PATH = ROOT_DIR / "healthcheck (3).7z"
+LEGACY_EXTRACT_DIR = ROOT_DIR / "legacy-src"
+LEGACY_PROJECT_DIR = LEGACY_EXTRACT_DIR / "healthcheck"
 OUTPUT_DIR = ROOT_DIR / "output"
 PAYLOAD_PATH = OUTPUT_DIR / "payload.json"
 HTML_OUTPUT_PATH = OUTPUT_DIR / "Healthcheck_BU.html"
 AUDIT_DIR = OUTPUT_DIR / "audit"
+LEGACY_OUTPUT_DIR = OUTPUT_DIR / "legacy"
 
 SUPPORTED_EXTENSIONS = (".csv",)
 DEFAULT_ENCODING_CANDIDATES = ("utf-8-sig", "utf-8", "cp1252", "latin1")

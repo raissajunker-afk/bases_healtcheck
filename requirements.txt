@@ -1,1 +1,2 @@
 pandas
+py7zr
