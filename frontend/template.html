@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Healthcheck Portal Analitico</title>
+    <style>
+__INLINE_CSS__
+    </style>
+  </head>
+  <body>
+    <header class="app-header">
+      <div>
+        <h1>Healthcheck Portal Analitico</h1>
+        <p class="subtitle">Home > Macro Secao > Subsecao > Pagina Analitica</p>
+      </div>
+      <button id="btn-home" class="btn-secondary">Voltar para Home</button>
+    </header>
+
+    <section class="filters-bar">
+      <label>
+        GD
+        <select id="filter-gd"></select>
+      </label>
+      <label>
+        Sales Force
+        <select id="filter-sales-force"></select>
+      </label>
+      <label>
+        Consultor
+        <select id="filter-consultor"></select>
+      </label>
+      <label>
+        Janela de Analise
+        <select id="filter-janela">
+          <option value="mat_12m">MAT 12m</option>
+          <option value="ultimos_3m">Ultimos 3m</option>
+          <option value="ultimo_mes_fechado">Ultimo mes fechado</option>
+          <option value="mes_atual_parcial">Mes atual parcial</option>
+        </select>
+      </label>
+    </section>
+
+    <nav id="breadcrumb" class="breadcrumb"></nav>
+    <main id="app-content" class="app-content"></main>
+
+    <script>
+      window.__PORTAL_PAYLOAD__ = __PAYLOAD_JSON__;
+      window.__PAGE_REGISTRY__ = __PAGE_REGISTRY__;
+    </script>
+    <script>
+__INLINE_JS__
+    </script>
+    <script>
+      window.Portal.router.init(window.__PORTAL_PAYLOAD__, window.__PAGE_REGISTRY__);
+    </script>
+  </body>
+</html>

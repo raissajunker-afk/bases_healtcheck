@@ -1,0 +1,70 @@
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+}
+
+.section-card {
+  cursor: pointer;
+  transition: transform 0.12s ease;
+}
+
+.section-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+}
+
+.kpi-card .title {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.kpi-card .value {
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 8px;
+}
+
+.table-container {
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  font-size: 12px;
+}
+
+.insight {
+  border-left: 4px solid var(--primary);
+  padding: 10px 12px;
+  background: var(--primary-soft);
+  border-radius: 10px;
+}
+
+.btn-secondary {
+  border: 1px solid var(--border);
+  background: white;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+.btn-export {
+  border: 1px solid var(--primary);
+  color: var(--primary);
+  border-radius: 8px;
+  background: #fff;
+  padding: 8px 12px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
