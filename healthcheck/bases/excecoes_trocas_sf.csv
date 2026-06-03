@@ -1,0 +1,30 @@
+wein_id;nome;mes_quebra;sf_antes;sf_depois;tipo;observacao
+51385322;Joel Fabio Alves De Oliveira;2025/03;BR_TUMORES_MAMA;BR_TUMORES_FEMININOS_MAMA;rename;rename geral mar/2025
+51220535;Cristiane Vitorino Razzera;2025/03;BR_TUMORES_MAMA;BR_TUMORES_FEMININOS_MAMA;rename;rename geral mar/2025
+30909350;Sandro Ismael Pohn;2025/03;BR_TUMORES_MAMA;BR_TUMORES_FEMININOS_MAMA;rename;rename geral mar/2025
+51122616;Deocleciano Rodrigues Pereira Junior;2025/03;BR_TUMORES_MAMA;BR_TUMORES_FEMININOS_MAMA;rename;rename geral mar/2025
+51069624;Ricardo Pereira Santana;2025/03;BR_TUMORES_MAMA;BR_TUMORES_FEMININOS_MAMA;rename;rename geral mar/2025
+51338647;Waleska Rabelo Cavalcante De Oliveira;2025/03;BR_TUMORES_MAMA;BR_TUMORES_FEMININOS_MAMA;rename;rename geral mar/2025
+51358207;Katarina Chagas Da Silva;2025/03;BR_TUMORES_MAMA;BR_TUMORES_FEMININOS_MAMA;rename;rename geral mar/2025
+51357958;Claudio Simoes Costa;2025/03;BR_TUMORES_MAMA;BR_TUMORES_FEMININOS_MAMA;rename;rename geral mar/2025
+30908936;Rogerio Christino;2025/03;BR_TUMORES_MAMA;BR_TUMORES_FEMININOS_MAMA;rename;rename geral mar/2025
+51358021;Erika Losch;2025/03;BR_TUMORES_MAMA;BR_TUMORES_FEMININOS_MAMA;rename;rename geral mar/2025
+51434366;Mirna Corso Masumoto;2025/03;BR_TUMORES_MAMA;BR_TUMORES_FEMININOS_MAMA;rename;rename geral mar/2025
+51509639;Rodrigo Alves Andrade;2025/03;BR_TUMORES_MAMA;BR_TUMORES_FEMININOS_MAMA;rename;rename geral mar/2025
+53107560;Aparecida Mendes De Azevedo;2025/03;BR_TUMORES_MAMA;BR_TUMORES_FEMININOS_MAMA;rename;rename geral mar/2025
+51358626;Anelize Freitas;2026/01;BR_TRANSPLANTE;BR_TUMORES_MAMA;troca_real;
+51074905;Alexandre Restuccia De Luna;2026/01;BR_TRANSPLANTE;BR_HEMATO_TRANSPLANTE;fusao;fusão hemato+transplante jan/2026
+53107836;Ismar Correia;2026/01;BR_TRANSPLANTE;BR_ENCAMINHADORES;troca_real;
+51250536;Luiz Ribeiro Da Silva Junior;2026/01;BR_TRANSPLANTE;BR_HEMATO_TRANSPLANTE;fusao;fusão hemato+transplante jan/2026
+51492151;Emmanuela Ayres;2026/01;BR_TRANSPLANTE;BR_HEMATO_TRANSPLANTE;fusao;fusão hemato+transplante jan/2026
+51438798;Maria Da Conceição Silva Da Rocha Galvão;2026/01;BR_MELANOMA_GU;BR_PULMAO;troca_real;
+30909635;Pedro Luiz Donizete Morandini;2026/01;BR_MELANOMA_GU;BR_PULMAO;troca_real;
+51346634;Mariana Aparecida De Oliveira;2026/01;BR_GI_HN;BR_TUMORES_FEMININOS_GINEC;troca_real;
+51316139;Andre Luiz Pinheiro;2026/01;BR_TUMORES_FEMININOS_GINEC;BR_TUMORES_MAMA;troca_real;
+51382961;Fernando Villela Jacob;2026/01;BR_HEMATO;BR_MELANOMA_GU;troca_real;
+51382949;Robson Cicero De Oliveira;2026/01;BR_HEMATO;BR_HEMATO_TRANSPLANTE;fusao;fusão hemato+transplante jan/2026
+51316883;Joao Carlos Nitoli Vieira;2026/01;BR_HEMATO;BR_TUMORES_MAMA;troca_real;
+51343745;Elaine Borely Vidal Godinho Dos Santos;2026/01;BR_HEMATO;BR_HEMATO_TRANSPLANTE;fusao;fusão hemato+transplante jan/2026
+51419132;Ana Raquel Tosta;2026/01;BR_HEMATO;BR_TUMORES_MAMA;troca_real;
+30909346;Rodrigo Sarto Amaro;2026/02;BR_GI_HN;BR_TUMORES_FEMININOS_GINEC;troca_real;
+51273527;Juliana Lopes Cardoso Ayres Bezerra;2026/05;BR_ENCAMINHADORES;BR_GI_HN;troca_real;

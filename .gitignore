@@ -1,0 +1,18 @@
+extracted/
+__pycache__/
+*.pyc
+.Python
+.venv/
+venv/
+
+# Saídas geradas localmente
+healthcheck/payload.json
+healthcheck/Healthcheck_*.html
+healthcheck/processar_log.txt
+healthcheck/dedup_audit.csv
+healthcheck/tipo_setor_audit.csv
+healthcheck/comparacao_antigo_vs_novo.txt
+
+# IDE
+.idea/
+.vscode/
