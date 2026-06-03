@@ -93,7 +93,8 @@ function portalOpenSection(sectionId){
   (sec.subsections||[]).forEach(sub=>{
     const el = document.createElement('div');
     el.className = 'portal-sub';
-    el.innerHTML = '<strong>'+sub.title+'</strong><span style="font-size:11px;color:var(--ink3)">'+(sub.question||'')+'</span>';
+    const badge = sub.mode==='native' ? ' <span style="font-size:9px;background:#e0f2f1;color:#00857C;padding:2px 6px;border-radius:4px;margin-left:4px">nativa</span>' : ' <span style="font-size:9px;color:var(--ink3)">legado</span>';
+    el.innerHTML = '<strong>'+sub.title+badge+'</strong><span style="font-size:11px;color:var(--ink3);display:block;margin-top:4px">'+(sub.question||'')+'</span>';
     el.onclick = ()=> portalOpenPage(sectionId, sub.id);
     grid.appendChild(el);
   });
@@ -104,9 +105,8 @@ function portalOpenSection(sectionId){
 function portalOpenPage(sectionId, pageId){
   const sec = (PORTAL_SECTIONS.sections||[]).find(s=>s.id===sectionId);
   const sub = sec && (sec.subsections||[]).find(p=>p.id===pageId);
-  if(!sub || !sub.legacyVista) return;
+  if(!sub) return;
   ST.portal = { sectionId, pageId, view: 'page' };
-  document.body.className = 'portal-mode-page';
   document.getElementById('portal-home').classList.remove('active');
   let intro = document.getElementById('portal-page-intro');
   if(!intro){
@@ -118,10 +118,21 @@ function portalOpenPage(sectionId, pageId){
   }
   intro.innerHTML = '<strong>'+sub.title+'</strong><br><span class="q">'+(sub.question||'')+'</span><br><span style="color:var(--ink3)">'+(sub.decision||'')+'</span>';
   intro.style.display = 'block';
-  setTab(sub.legacyVista);
-  if(sub.legacyAnchor){
-    const el = document.getElementById(sub.legacyAnchor);
-    if(el) setTimeout(()=> el.scrollIntoView({behavior:'smooth',block:'start'}), 120);
+  const nativeHost = document.getElementById('portal-native-page');
+  if(nativeHost) nativeHost.style.display = 'none';
+  const useNative = sub.mode === 'native' && typeof PortalBlocks !== 'undefined'
+    && PortalBlocks.portalRenderNativePage(sectionId, pageId, sub);
+  if(useNative){
+    document.body.className = 'portal-mode-native';
+    document.querySelectorAll('.vista').forEach(v=>v.classList.remove('active'));
+  } else {
+    document.body.className = 'portal-mode-page';
+    if(!sub.legacyVista) return;
+    setTab(sub.legacyVista);
+    if(sub.legacyAnchor){
+      const el = document.getElementById(sub.legacyAnchor);
+      if(el) setTimeout(()=> el.scrollIntoView({behavior:'smooth',block:'start'}), 120);
+    }
   }
   portalUpdateBreadcrumb();
 }
@@ -130,6 +141,8 @@ function portalShowHome(){
   ST.portal = { view: 'home', sectionId: null, pageId: null };
   document.body.className = 'portal-mode-home';
   document.querySelectorAll('.vista').forEach(v=>v.classList.remove('active'));
+  const nh = document.getElementById('portal-native-page');
+  if(nh){ nh.style.display='none'; nh.innerHTML=''; }
   const intro = document.getElementById('portal-page-intro');
   if(intro) intro.style.display = 'none';
   const ph = document.getElementById('portal-home');
@@ -186,6 +199,7 @@ PORTAL_BODY_INJECT = """
 <!-- ========== PORTAL (navegação) — conteúdo analítico nas .vista abaixo ========== -->
 <div id="portal-breadcrumb"></div>
 <div id="portal-home" class="active"></div>
+<div id="portal-native-page"></div>
 """
 
 
@@ -232,6 +246,8 @@ def gerar_portal(
         raise FileNotFoundError(f"payload.json não encontrado: {payload_path}")
 
     py_source = legacy_py.read_text(encoding="utf-8")
+    css_native = (config.FRONTEND_DIR / "css" / "portal-native.css").read_text(encoding="utf-8")
+    js_blocks = (config.FRONTEND_DIR / "js" / "portal-blocks.js").read_text(encoding="utf-8")
     css = _extract_raw_string(py_source, "CSS")
     body = _patch_body(_extract_raw_string(py_source, "BODY"))
     script = _patch_script(_extract_raw_string(py_source, "SCRIPT"))
@@ -256,7 +272,7 @@ def gerar_portal(
     script = script.replace("__DADOS_B64__", payload_b64)
     # Inserir portal JS antes do boot decode (após const ST definido — na verdade após decode)
     # Colocar após abertura <script> do SCRIPT (já inclui <script>)
-    nav_js_block = f"<script>\n{nav_js}\n</script>\n"
+    nav_js_block = f"<script>\n{js_blocks}\n</script>\n<script>\n{nav_js}\n</script>\n"
 
     # Botão Home no header original
     body = body.replace(
@@ -283,6 +299,7 @@ def gerar_portal(
 '''
         + css
         + PORTAL_NAV_CSS
+        + css_native
         + "</style>\n</head>\n<body>\n"
         + body
         + nav_js_block

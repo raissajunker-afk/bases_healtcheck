@@ -373,5 +373,9 @@ def enriquecer_payload_portal(
         "insights_global": _insights_executive(payload.get("kpis", {}), consultores),
     }
 
+    from native_pages import attach_native_blocks
+
+    attach_native_blocks(portal, payload)
+
     payload["portal"] = portal
     return payload

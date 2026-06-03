@@ -4,8 +4,8 @@
 |------|--------|---------|
 | **1** | Concluída | Portal = `html (13).py` + Home/15 seções/breadcrumb; `main.py`; bases em `healthcheck/bases/` |
 | **2** | Concluída | `payload.portal` modular (`dimensions`, `sections`, `pages`, `audit`, `insights`); legado intacto na raiz |
-| **3** | Próxima | Páginas com blocos nativos lendo `DATA.portal.sections.*` (sem só `setTab`) |
-| **4** | Planejada | Camada de insights automáticos expandida |
+| **3** | Em andamento | 19 páginas nativas (KPI, tabela, gráfico, CSV) + link para legado |
+| **4** | Próxima | Camada de insights automáticos expandida |
 | **5** | Planejada | Export executivo (CSV por seção, pacote liderança) |
 
 ## Fase 2 — como usar

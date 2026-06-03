@@ -15,7 +15,8 @@
           "legacyVista": "overview",
           "legacyAnchor": null,
           "question": "Como está o time agora?",
-          "decision": "Priorizar frentes imediatas."
+          "decision": "Priorizar frentes imediatas.",
+          "mode": "native"
         },
         {
           "id": "alertas",
@@ -23,7 +24,8 @@
           "legacyVista": "overview",
           "legacyAnchor": "kpi-grid",
           "question": "O que exige ação urgente?",
-          "decision": "Escalar com GD/SF."
+          "decision": "Escalar com GD/SF.",
+          "mode": "native"
         },
         {
           "id": "evolucao",
@@ -31,7 +33,8 @@
           "legacyVista": "timeline",
           "legacyAnchor": null,
           "question": "Melhora ou piora?",
-          "decision": "Ajustar plano trimestral."
+          "decision": "Ajustar plano trimestral.",
+          "mode": "native"
         },
         {
           "id": "resumo_sf",
@@ -39,7 +42,8 @@
           "legacyVista": "overview",
           "legacyAnchor": "sf-block",
           "question": "Qual SF puxa resultado?",
-          "decision": "Balancear suporte."
+          "decision": "Balancear suporte.",
+          "mode": "native"
         },
         {
           "id": "resumo_gd",
@@ -47,7 +51,8 @@
           "legacyVista": "overview",
           "legacyAnchor": "gd-summary-block",
           "question": "Qual GD precisa coaching?",
-          "decision": "Visita de campo."
+          "decision": "Visita de campo.",
+          "mode": "native"
         }
       ]
     },
@@ -63,7 +68,8 @@
           "legacyVista": "overview",
           "legacyAnchor": "svg-hist-visitas",
           "question": "Cadência de visitas?",
-          "decision": "Metas visitas/dia."
+          "decision": "Metas visitas/dia.",
+          "mode": "native"
         },
         {
           "id": "por_consultor",
@@ -71,7 +77,8 @@
           "legacyVista": "detail",
           "legacyAnchor": null,
           "question": "Quem está acima/abaixo?",
-          "decision": "Coaching 1:1."
+          "decision": "Coaching 1:1.",
+          "mode": "native"
         },
         {
           "id": "alta",
@@ -79,7 +86,8 @@
           "legacyVista": "detail",
           "legacyAnchor": null,
           "question": "Benchmarks internos?",
-          "decision": "Replicar práticas."
+          "decision": "Replicar práticas.",
+          "mode": "native"
         },
         {
           "id": "baixa",
@@ -87,7 +95,8 @@
           "legacyVista": "detail",
           "legacyAnchor": null,
           "question": "Quem recuperar?",
-          "decision": "Plano prioritário."
+          "decision": "Plano prioritário.",
+          "mode": "native"
         },
         {
           "id": "mat_vs_recente",
@@ -95,7 +104,8 @@
           "legacyVista": "historico",
           "legacyAnchor": null,
           "question": "Melhora sustentável?",
-          "decision": "Validar sazonalidade."
+          "decision": "Validar sazonalidade.",
+          "mode": "legacy"
         }
       ]
     },
@@ -111,7 +121,8 @@
           "legacyVista": "visitation",
           "legacyAnchor": null,
           "question": "Cobrimos o plano?",
-          "decision": "Reforçar MCCP."
+          "decision": "Reforçar MCCP.",
+          "mode": "native"
         },
         {
           "id": "f2f",
@@ -119,7 +130,8 @@
           "legacyVista": "visitation",
           "legacyAnchor": null,
           "question": "F2F nos alvos?",
-          "decision": "Médicos descobertos."
+          "decision": "Médicos descobertos.",
+          "mode": "native"
         },
         {
           "id": "fora_painel",
@@ -127,7 +139,8 @@
           "legacyVista": "visitation",
           "legacyAnchor": null,
           "question": "Visitas fora do plano?",
-          "decision": "Reduzir fora MCCP."
+          "decision": "Reduzir fora MCCP.",
+          "mode": "legacy"
         },
         {
           "id": "turnover",
@@ -135,7 +148,8 @@
           "legacyVista": "visitation",
           "legacyAnchor": null,
           "question": "Painel estável?",
-          "decision": "Revisar movimentações."
+          "decision": "Revisar movimentações.",
+          "mode": "legacy"
         },
         {
           "id": "parados",
@@ -143,7 +157,8 @@
           "legacyVista": "detail",
           "legacyAnchor": null,
           "question": "Quem não visitou?",
-          "decision": "Ativar parados."
+          "decision": "Ativar parados.",
+          "mode": "native"
         }
       ]
     },
@@ -159,7 +174,8 @@
           "legacyVista": "visitation",
           "legacyAnchor": null,
           "question": "Freq. por médico?",
-          "decision": "Ajustar cadência."
+          "decision": "Ajustar cadência.",
+          "mode": "native"
         },
         {
           "id": "consistencia",
@@ -167,7 +183,8 @@
           "legacyVista": "timeline",
           "legacyAnchor": null,
           "question": "Visitas todo mês?",
-          "decision": "Corrigir buracos."
+          "decision": "Corrigir buracos.",
+          "mode": "legacy"
         },
         {
           "id": "por_dia",
@@ -175,7 +192,8 @@
           "legacyVista": "overview",
           "legacyAnchor": "svg-hist-visitas",
           "question": "Distribuição diária?",
-          "decision": "Evitar picos."
+          "decision": "Evitar picos.",
+          "mode": "legacy"
         },
         {
           "id": "sazonalidade",
@@ -183,7 +201,8 @@
           "legacyVista": "timeline",
           "legacyAnchor": null,
           "question": "Meses fracos?",
-          "decision": "Reforço sazonal."
+          "decision": "Reforço sazonal.",
+          "mode": "legacy"
         },
         {
           "id": "medico_freq",
@@ -191,7 +210,8 @@
           "legacyVista": "visitation",
           "legacyAnchor": null,
           "question": "Sub-frequentes?",
-          "decision": "Priorizar 1x."
+          "decision": "Priorizar 1x.",
+          "mode": "legacy"
         }
       ]
     },
@@ -207,7 +227,8 @@
           "legacyVista": "setor",
           "legacyAnchor": null,
           "question": "Local ou viagem?",
-          "decision": "Metas por perfil."
+          "decision": "Metas por perfil.",
+          "mode": "legacy"
         },
         {
           "id": "deslocamento",
@@ -215,7 +236,8 @@
           "legacyVista": "setor",
           "legacyAnchor": null,
           "question": "Excesso viagem?",
-          "decision": "Otimizar rota."
+          "decision": "Otimizar rota.",
+          "mode": "legacy"
         },
         {
           "id": "brickagem",
@@ -223,7 +245,8 @@
           "legacyVista": "setor",
           "legacyAnchor": null,
           "question": "Bricks visitados?",
-          "decision": "Corrigir brickagem."
+          "decision": "Corrigir brickagem.",
+          "mode": "legacy"
         },
         {
           "id": "geo",
@@ -231,7 +254,8 @@
           "legacyVista": "setor",
           "legacyAnchor": null,
           "question": "UF/cidade sede?",
-          "decision": "Reduzir fora sede."
+          "decision": "Reduzir fora sede.",
+          "mode": "legacy"
         },
         {
           "id": "score",
@@ -239,7 +263,8 @@
           "legacyVista": "setor",
           "legacyAnchor": null,
           "question": "Score territorial?",
-          "decision": "Territórios críticos."
+          "decision": "Territórios críticos.",
+          "mode": "legacy"
         }
       ]
     },
@@ -255,7 +280,8 @@
           "legacyVista": "absence",
           "legacyAnchor": null,
           "question": "% ausência?",
-          "decision": "Controlar agregado."
+          "decision": "Controlar agregado.",
+          "mode": "native"
         },
         {
           "id": "produtiva",
@@ -263,7 +289,8 @@
           "legacyVista": "absence",
           "legacyAnchor": null,
           "question": "Treinamento/congresso?",
-          "decision": "Balancear dev."
+          "decision": "Balancear dev.",
+          "mode": "legacy"
         },
         {
           "id": "pessoal",
@@ -271,7 +298,8 @@
           "legacyVista": "absence",
           "legacyAnchor": null,
           "question": "Pessoais altos?",
-          "decision": "RH/GD."
+          "decision": "RH/GD.",
+          "mode": "legacy"
         },
         {
           "id": "capacidade",
@@ -279,7 +307,8 @@
           "legacyVista": "simulator",
           "legacyAnchor": null,
           "question": "Cabe na capacidade?",
-          "decision": "Simular cenários."
+          "decision": "Simular cenários.",
+          "mode": "legacy"
         },
         {
           "id": "gap",
@@ -287,7 +316,8 @@
           "legacyVista": "absence",
           "legacyAnchor": null,
           "question": "Dias sem visita/ausência?",
-          "decision": "Sub-report."
+          "decision": "Sub-report.",
+          "mode": "legacy"
         }
       ]
     },
@@ -303,7 +333,8 @@
           "legacyVista": "gloss",
           "legacyAnchor": null,
           "question": "Especialidades certas?",
-          "decision": "Ver glossário + CSV futuro."
+          "decision": "Ver glossário + CSV futuro.",
+          "mode": "legacy"
         },
         {
           "id": "matriz",
@@ -311,7 +342,8 @@
           "legacyVista": "gloss",
           "legacyAnchor": null,
           "question": "Combinações críticas?",
-          "decision": "Config franquias."
+          "decision": "Config franquias.",
+          "mode": "legacy"
         },
         {
           "id": "cobertura_franquia",
@@ -319,7 +351,8 @@
           "legacyVista": "perfindex",
           "legacyAnchor": null,
           "question": "Relevantes cobertos?",
-          "decision": "Plano franquia."
+          "decision": "Plano franquia.",
+          "mode": "legacy"
         },
         {
           "id": "gaps_hierarquia",
@@ -327,7 +360,8 @@
           "legacyVista": "detail",
           "legacyAnchor": null,
           "question": "Maior gap?",
-          "decision": "Ranking correção."
+          "decision": "Ranking correção.",
+          "mode": "legacy"
         },
         {
           "id": "prioritarios",
@@ -335,7 +369,8 @@
           "legacyVista": "detail",
           "legacyAnchor": null,
           "question": "Plano de ação?",
-          "decision": "Export na tabela."
+          "decision": "Export na tabela.",
+          "mode": "legacy"
         }
       ]
     },
@@ -351,7 +386,8 @@
           "legacyVista": "visitation",
           "legacyAnchor": null,
           "question": "No plano?",
-          "decision": "Reduzir fora MCCP."
+          "decision": "Reduzir fora MCCP.",
+          "mode": "legacy"
         },
         {
           "id": "canal",
@@ -359,7 +395,8 @@
           "legacyVista": "perfindex",
           "legacyAnchor": null,
           "question": "Mix canais?",
-          "decision": "F2F vs remoto."
+          "decision": "F2F vs remoto.",
+          "mode": "legacy"
         },
         {
           "id": "segmentacao",
@@ -367,7 +404,8 @@
           "legacyVista": "detail",
           "legacyAnchor": null,
           "question": "Esforço proporcional?",
-          "decision": "Revisar seg."
+          "decision": "Revisar seg.",
+          "mode": "legacy"
         },
         {
           "id": "esp_operacional",
@@ -375,7 +413,8 @@
           "legacyVista": "detail",
           "legacyAnchor": null,
           "question": "Cadastro OK?",
-          "decision": "Saneamento."
+          "decision": "Saneamento.",
+          "mode": "legacy"
         },
         {
           "id": "cadastro",
@@ -383,7 +422,8 @@
           "legacyVista": "gloss",
           "legacyAnchor": null,
           "question": "Inconsistências?",
-          "decision": "Regras no glossário."
+          "decision": "Regras no glossário.",
+          "mode": "legacy"
         }
       ]
     },
@@ -399,7 +439,8 @@
           "legacyVista": "overlap",
           "legacyAnchor": null,
           "question": "Compartilhados?",
-          "decision": "Redistribuir."
+          "decision": "Redistribuir.",
+          "mode": "native"
         },
         {
           "id": "cross",
@@ -407,7 +448,8 @@
           "legacyVista": "overlap",
           "legacyAnchor": null,
           "question": "Conflito times?",
-          "decision": "Governança."
+          "decision": "Governança.",
+          "mode": "legacy"
         },
         {
           "id": "compartilhados",
@@ -415,7 +457,8 @@
           "legacyVista": "overlap",
           "legacyAnchor": null,
           "question": "Quantos MDMs?",
-          "decision": "Resolver dup."
+          "decision": "Resolver dup.",
+          "mode": "legacy"
         },
         {
           "id": "territorio",
@@ -423,7 +466,8 @@
           "legacyVista": "setor",
           "legacyAnchor": null,
           "question": "Sobreposição geo?",
-          "decision": "Brickagem."
+          "decision": "Brickagem.",
+          "mode": "legacy"
         },
         {
           "id": "redistribuicao",
@@ -431,7 +475,8 @@
           "legacyVista": "overlap",
           "legacyAnchor": null,
           "question": "Onde redistribuir?",
-          "decision": "Plano painel."
+          "decision": "Plano painel.",
+          "mode": "legacy"
         }
       ]
     },
@@ -447,7 +492,8 @@
           "legacyVista": "simulator",
           "legacyAnchor": null,
           "question": "Meta cabe?",
-          "decision": "Ajustar meta."
+          "decision": "Ajustar meta.",
+          "mode": "legacy"
         },
         {
           "id": "perfil",
@@ -455,7 +501,8 @@
           "legacyVista": "simulator",
           "legacyAnchor": null,
           "question": "Meta por perfil?",
-          "decision": "Diferenciar."
+          "decision": "Diferenciar.",
+          "mode": "legacy"
         },
         {
           "id": "cobertura_plan",
@@ -463,7 +510,8 @@
           "legacyVista": "simulator",
           "legacyAnchor": null,
           "question": "Cobertura possível?",
-          "decision": "Priorizar MCCP."
+          "decision": "Priorizar MCCP.",
+          "mode": "legacy"
         },
         {
           "id": "painel",
@@ -471,7 +519,8 @@
           "legacyVista": "simulator",
           "legacyAnchor": null,
           "question": "Painel sobrecarregado?",
-          "decision": "Redistribuir."
+          "decision": "Redistribuir.",
+          "mode": "legacy"
         },
         {
           "id": "cenarios",
@@ -479,7 +528,8 @@
           "legacyVista": "simulator",
           "legacyAnchor": null,
           "question": "Cenário recomendado?",
-          "decision": "Liderança."
+          "decision": "Liderança.",
+          "mode": "legacy"
         }
       ]
     },
@@ -495,7 +545,8 @@
           "legacyVista": "detail",
           "legacyAnchor": null,
           "question": "Top ações?",
-          "decision": "Foco mensal."
+          "decision": "Foco mensal.",
+          "mode": "native"
         },
         {
           "id": "por_consultor",
@@ -503,7 +554,8 @@
           "legacyVista": "detail",
           "legacyAnchor": null,
           "question": "Plano REP?",
-          "decision": "1:1."
+          "decision": "1:1.",
+          "mode": "native"
         },
         {
           "id": "por_sf_gd",
@@ -511,7 +563,8 @@
           "legacyVista": "overview",
           "legacyAnchor": "sf-block",
           "question": "Plano liderança?",
-          "decision": "Reunião SF."
+          "decision": "Reunião SF.",
+          "mode": "legacy"
         },
         {
           "id": "ativacao",
@@ -519,7 +572,8 @@
           "legacyVista": "detail",
           "legacyAnchor": null,
           "question": "Quem ativar?",
-          "decision": "Lista semana."
+          "decision": "Lista semana.",
+          "mode": "native"
         },
         {
           "id": "backlog",
@@ -527,7 +581,8 @@
           "legacyVista": "detail",
           "legacyAnchor": null,
           "question": "Pendências?",
-          "decision": "Priorizar."
+          "decision": "Priorizar.",
+          "mode": "legacy"
         }
       ]
     },
@@ -543,7 +598,8 @@
           "legacyVista": "gloss",
           "legacyAnchor": null,
           "question": "Quais bases?",
-          "decision": "Validar fontes."
+          "decision": "Validar fontes.",
+          "mode": "native"
         },
         {
           "id": "exclusoes",
@@ -551,7 +607,8 @@
           "legacyVista": "gloss",
           "legacyAnchor": null,
           "question": "O que excluído?",
-          "decision": "Transparência."
+          "decision": "Transparência.",
+          "mode": "legacy"
         },
         {
           "id": "dedup",
@@ -559,7 +616,8 @@
           "legacyVista": "gloss",
           "legacyAnchor": null,
           "question": "Como dedup?",
-          "decision": "dedup_audit.csv."
+          "decision": "dedup_audit.csv.",
+          "mode": "legacy"
         },
         {
           "id": "indicadores",
@@ -567,7 +625,8 @@
           "legacyVista": "gloss",
           "legacyAnchor": null,
           "question": "Como calcula?",
-          "decision": "Glossário."
+          "decision": "Glossário.",
+          "mode": "legacy"
         },
         {
           "id": "completude",
@@ -575,7 +634,8 @@
           "legacyVista": "gloss",
           "legacyAnchor": null,
           "question": "Dados completos?",
-          "decision": "Corrigir lacunas."
+          "decision": "Corrigir lacunas.",
+          "mode": "legacy"
         }
       ]
     },
@@ -591,7 +651,8 @@
           "legacyVista": "perfindex",
           "legacyAnchor": null,
           "question": "Mix F2F/remoto?",
-          "decision": "Balancear."
+          "decision": "Balancear.",
+          "mode": "legacy"
         },
         {
           "id": "remoto",
@@ -599,7 +660,8 @@
           "legacyVista": "perfindex",
           "legacyAnchor": null,
           "question": "Remoto compensa?",
-          "decision": "F2F decisores."
+          "decision": "F2F decisores.",
+          "mode": "legacy"
         },
         {
           "id": "digital",
@@ -607,7 +669,8 @@
           "legacyVista": "perfindex",
           "legacyAnchor": null,
           "question": "Na meta?",
-          "decision": "Plano digital."
+          "decision": "Plano digital.",
+          "mode": "legacy"
         },
         {
           "id": "comparativo",
@@ -615,7 +678,8 @@
           "legacyVista": "overview",
           "legacyAnchor": "sf-block",
           "question": "SF mais multicanal?",
-          "decision": "Benchmark."
+          "decision": "Benchmark.",
+          "mode": "legacy"
         },
         {
           "id": "evolucao",
@@ -623,7 +687,8 @@
           "legacyVista": "historico",
           "legacyAnchor": null,
           "question": "Tendência?",
-          "decision": "Acompanhar MAT."
+          "decision": "Acompanhar MAT.",
+          "mode": "legacy"
         }
       ]
     },
@@ -639,7 +704,8 @@
           "legacyVista": "overview",
           "legacyAnchor": "kpi-grid",
           "question": "Bate meta?",
-          "decision": "Ajustar."
+          "decision": "Ajustar.",
+          "mode": "legacy"
         },
         {
           "id": "vs_meta",
@@ -647,7 +713,8 @@
           "legacyVista": "simulator",
           "legacyAnchor": null,
           "question": "Gap meta?",
-          "decision": "Fechamento."
+          "decision": "Fechamento.",
+          "mode": "legacy"
         },
         {
           "id": "quartis",
@@ -655,7 +722,8 @@
           "legacyVista": "overview",
           "legacyAnchor": null,
           "question": "Distribuição?",
-          "decision": "Mover mediana."
+          "decision": "Mover mediana.",
+          "mode": "legacy"
         },
         {
           "id": "sf_benchmark",
@@ -663,7 +731,8 @@
           "legacyVista": "overview",
           "legacyAnchor": "sf-block",
           "question": "SF referência?",
-          "decision": "Sharing."
+          "decision": "Sharing.",
+          "mode": "legacy"
         },
         {
           "id": "historico_meta",
@@ -671,7 +740,8 @@
           "legacyVista": "historico",
           "legacyAnchor": null,
           "question": "Evoluiu?",
-          "decision": "Revisar anual."
+          "decision": "Revisar anual.",
+          "mode": "legacy"
         }
       ]
     },
@@ -687,7 +757,8 @@
           "legacyVista": "visitation",
           "legacyAnchor": null,
           "question": "Revisitados?",
-          "decision": "2ª visita."
+          "decision": "2ª visita.",
+          "mode": "legacy"
         },
         {
           "id": "profundidade",
@@ -695,7 +766,8 @@
           "legacyVista": "visitation",
           "legacyAnchor": null,
           "question": "Só 1 visita?",
-          "decision": "Priorizar."
+          "decision": "Priorizar.",
+          "mode": "legacy"
         },
         {
           "id": "vip",
@@ -703,7 +775,8 @@
           "legacyVista": "detail",
           "legacyAnchor": null,
           "question": "Decisores?",
-          "decision": "Plano VIP."
+          "decision": "Plano VIP.",
+          "mode": "legacy"
         },
         {
           "id": "engajamento_sf",
@@ -711,7 +784,8 @@
           "legacyVista": "overview",
           "legacyAnchor": "sf-block",
           "question": "SF engaja mais?",
-          "decision": "Replicar."
+          "decision": "Replicar.",
+          "mode": "legacy"
         },
         {
           "id": "plano_rel",
@@ -719,7 +793,8 @@
           "legacyVista": "historico",
           "legacyAnchor": null,
           "question": "Próximos passos?",
-          "decision": "CRM tático."
+          "decision": "CRM tático.",
+          "mode": "legacy"
         }
       ]
     }
